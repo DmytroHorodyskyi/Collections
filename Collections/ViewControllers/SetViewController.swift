@@ -1,0 +1,65 @@
+//
+//  SetViewController.swift
+//  Collections
+//
+//  Created by Dmytro Horodyskyi on 09.02.2023.
+//
+
+import UIKit
+
+class SetViewController: UIViewController {
+    
+    @IBOutlet weak var mainTextField: UITextField!
+    @IBOutlet weak var auxiliaryTextFiled: UITextField!
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var thirdLabel: UILabel!
+    
+    private let model = SetModel()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func removeDigits(from string: String) -> String{
+        string.components(separatedBy: CharacterSet.decimalDigits).joined()
+    }
+    
+    @IBAction func mainTextFieldAction(_ sender: UITextField) {
+        if let text = mainTextField.text {
+            mainTextField.text = removeDigits(from: text)
+        }
+    }
+    
+    @IBAction func auxiliaryTextFieldAction(_ sender: UITextField) {
+        if let text = auxiliaryTextFiled.text {
+            auxiliaryTextFiled.text = removeDigits(from: text)
+        }
+    }
+    
+    @IBAction func AllMatchingLettersActionButton(_ sender: UIButton) {
+        firstLabel.text = model.intesection(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
+    }
+    
+    @IBAction func AllCharactersThatDoNotMatchButtonAction(_ sender: UIButton) {
+        secondLabel.text = model.symmetricDifference(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
+    }
+    
+    @IBAction func AllUniquecharactersFromTheFirsttextField(_ sender: UIButton) {
+        thirdLabel.text = model.subtracting(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
+    }
+}
+
+extension SetViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        mainTextField.resignFirstResponder()
+        auxiliaryTextFiled.resignFirstResponder()
+        return true
+    }
+}
