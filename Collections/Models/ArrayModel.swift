@@ -13,6 +13,7 @@ struct ArrayModel {
     let auxiliaryArray = Array(0...1000)
     
     mutating func generateArray() {
+        array = []
         for element in 0..<10_000_000 {
             array.append(element + 1)
         }
