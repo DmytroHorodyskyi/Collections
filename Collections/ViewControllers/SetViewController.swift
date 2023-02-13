@@ -14,8 +14,8 @@ class SetViewController: UIViewController {
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var thirdLabel: UILabel!
+    private let setService = SetService()
     
-    private let model = SetModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -43,15 +43,15 @@ class SetViewController: UIViewController {
     }
     
     @IBAction func AllMatchingLettersActionButton(_ sender: UIButton) {
-        firstLabel.text = model.intesection(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
+        firstLabel.text = setService.intesection(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
     }
     
     @IBAction func AllCharactersThatDoNotMatchButtonAction(_ sender: UIButton) {
-        secondLabel.text = model.symmetricDifference(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
+        secondLabel.text = setService.symmetricDifference(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
     }
     
     @IBAction func AllUniquecharactersFromTheFirsttextField(_ sender: UIButton) {
-        thirdLabel.text = model.subtracting(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
+        thirdLabel.text = setService.subtracting(in: mainTextField.text ?? "", and: auxiliaryTextFiled.text ?? "")
     }
 }
 

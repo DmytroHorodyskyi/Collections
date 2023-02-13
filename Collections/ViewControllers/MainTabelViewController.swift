@@ -7,20 +7,24 @@
 
 import UIKit
 
-class MainViewController: UITableViewController {
+class MainTabelViewController: UITableViewController {
     
-    @IBOutlet var mainTable: UITableView!
+    @IBOutlet var mainTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let headerview = UIView(frame: CGRect(x: 0, y: 0,
-                                              width: self.mainTable.frame.width, height: 40))
+        self.tableView.tableHeaderView = createHeaderWithLabel(text: "Collections", fontSize: 34, fontWeight: .bold)
+    }
+    
+    func createHeaderWithLabel(text: String, fontSize:  CGFloat, fontWeight: UIFont.Weight) -> UIView {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0,
+                                              width: self.tableView.frame.width, height: 40))
         let label = UILabel(frame: CGRect(x: 16, y: 10,
-                                          width: self.mainTable.frame.width, height: 40))
-        label.text = "Collections"
-        label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        headerview.addSubview(label)
-        self.mainTable.tableHeaderView = headerview
+                                          width: self.tableView.frame.width, height: 40))
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
+        headerView.addSubview(label)
+        return headerView
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

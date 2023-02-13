@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DictionaryModel {
+struct DictionaryService {
     var arrayOfNames = [String]()
     var arrayOfPhones = [String]()
     var dictionaryOfContacts = [String:String]()

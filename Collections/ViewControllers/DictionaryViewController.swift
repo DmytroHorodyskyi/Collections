@@ -11,7 +11,7 @@ class DictionaryViewController: UIViewController {
     
     @IBOutlet weak var mainActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dictionaryCollectionView: UICollectionView!
-    var model = DictionaryModel()
+    var dictionaryService = DictionaryService()
     let cellName = [
         "Find the first contact",
         "Find the last contact",
@@ -31,7 +31,7 @@ class DictionaryViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        model.generateCollectionsOf(1_000_000)
+        dictionaryService.generateCollectionsOf(10_000_000)
         mainActivityIndicator.isHidden = true
         mainActivityIndicator.stopAnimating()
         dictionaryCollectionView.isHidden = false
@@ -91,7 +91,7 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
         cell?.cellActivityIndicator.startAnimating()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            let timeAndResult = self.model.getTimeAndResultOf(function: indexPath.row)
+            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: indexPath.row)
             cell?.cellActivityIndicator.isHidden = true
             cell?.cellActivityIndicator.stopAnimating()
             cell?.backgroundColor = UIColor.white
@@ -100,10 +100,3 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
     }
 }
 
-
-class DictionaryCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var cellActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var cellLabel: UILabel!
-
-}

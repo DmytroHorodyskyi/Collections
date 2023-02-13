@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SetModel {
+struct SetService {
     
     func intesection(in string1: String, and string2: String) -> String {
         let mainSet = Set(string1)
