@@ -11,20 +11,21 @@ class ArrayViewController: UIViewController {
     
     @IBOutlet weak var arrayCollectionView: UICollectionView!
     var arrayService = ArrayService()
+    var time = String()
     var cellName = ["Create Int array with 10_000_000 elements"]
     let namesOfSecondaryCells = [
-                 "Insert at the beginning of an array 1000 elements one-by-one",
-                 "Insert at the beginning of an array 1000 elements at once",
-                 "Insert in the middle of an array 1000 elements one-by-on,e",
-                 "Insert in the middle of an array 1000 elements at once",
-                 "Append to the end of an array 1000 elements one-by-one",
-                 "Append to the end of an array 1000 elements at once",
-                 "Remove at the beginning 1000 elements one-by-one",
-                 "Remove at the beginning 1000 elements at once",
-                 "Remove in the middle 1000 elements one-by-one",
-                 "Remove in the middle 1000 elements at once",
-                 "Remove at the end 1000 elements one-by-one",
-                 "Remove at the end 1000 elements at once"
+        "Insert at the beginning of an array 1000 elements one-by-one",
+        "Insert at the beginning of an array 1000 elements at once",
+        "Insert in the middle of an array 1000 elements one-by-on,e",
+        "Insert in the middle of an array 1000 elements at once",
+        "Append to the end of an array 1000 elements one-by-one",
+        "Append to the end of an array 1000 elements at once",
+        "Remove at the beginning 1000 elements one-by-one",
+        "Remove at the beginning 1000 elements at once",
+        "Remove in the middle 1000 elements one-by-one",
+        "Remove in the middle 1000 elements at once",
+        "Remove at the end 1000 elements one-by-one",
+        "Remove at the end 1000 elements at once"
     ]
     
     override func viewDidLoad() {
@@ -73,12 +74,12 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         guard let cell = collectionView.cellForItem(at: indexPath) as? ArrayCollectionViewCell else {return}
         cell.setCell(cell, showIndicator: true, label: "")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [self] in
-            let time = self.arrayService.getTimeOf(function: ArrayIdentifiersRepository(rawValue: indexPath.row) ?? .generateArray)
+        DispatchQueue.global().async {
+                self.time = self.arrayService.getTimeOf(function: ArrayIdentifiersRepository(rawValue: indexPath.row) ?? .none)
+            DispatchQueue.main.async { [self] in
             let text = self.getLabelText(for: indexPath.row, with: time)
             if !cellName.contains(namesOfSecondaryCells) {
                 cellName.append(contentsOf: namesOfSecondaryCells)
@@ -87,6 +88,7 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
                 collectionView.reloadData()
             }
             cell.setCell(cell, showIndicator: false, backgraundColor: .white, label: text)
+            }
         }
     }
 }

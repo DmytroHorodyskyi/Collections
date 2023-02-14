@@ -21,12 +21,14 @@ enum ArrayIdentifiersRepository: Int {
     case removeInTheMiddleAtOnce = 10
     case removeAtTheEndOneByOne = 11
     case removeAtTheEndAtOnce = 12
+    case none
 }
 
 struct ArrayService {
-
+    
     private var array = [Int]()
     private let auxiliaryArray = Array(0..<1000)
+    private let arrayOperationsQueue = DispatchQueue(label: "arrayOperationsQueue")
     
     private mutating func generateArray() {
         array = []
@@ -106,6 +108,7 @@ struct ArrayService {
     
     
     private mutating func runOperationWith(at identifiersRepository: ArrayIdentifiersRepository) {
+        
         switch identifiersRepository {
         case .generateArray:
             generateArray()
@@ -133,16 +136,20 @@ struct ArrayService {
             removeAtTheEndOneByOne()
         case .removeAtTheEndAtOnce:
             removeAtTheEndAtOnce()
+        case .none:
+            return 
         }
     }
     
     mutating func getTimeOf(function identifier: ArrayIdentifiersRepository) -> String {
-        let start = DispatchTime.now()
-        runOperationWith(at: identifier)
-        let end = DispatchTime.now()
-        let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
-        let timeInterval = Double(nanoTime) / 1_000_000
-        return String(format: "%.2f", timeInterval)
+        arrayOperationsQueue.sync {
+            let start = DispatchTime.now()
+            runOperationWith(at: identifier)
+            let end = DispatchTime.now()
+            let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
+            let timeInterval = Double(nanoTime) / 1_000_000
+            return String(format: "%.2f", timeInterval)
+        }
     }
 }
 

@@ -14,6 +14,7 @@ enum DictionaryIdentifiersRepository: Int {
     case findLastElementOfDictionary = 3
     case searchForNonExistingElementOfArray = 4
     case searchForNonExistingElementOfDictionary = 5
+    case none
 }
 
 struct DictionaryService {
@@ -76,7 +77,8 @@ struct DictionaryService {
             return searchForNonExistingElementOfArray()
         case .searchForNonExistingElementOfDictionary:
             return searchForNonExistingElementOfDictionary()
-
+        case .none:
+            return ""
         }
     }
     

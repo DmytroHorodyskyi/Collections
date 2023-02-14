@@ -86,10 +86,12 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
         guard let cell = collectionView.cellForItem(at: indexPath) as? DictionaryCollectionViewCell else {return}
         cell.setCell(cell, showIndicator: true, label: "")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryIdentifiersRepository(rawValue: indexPath.row) ?? .findFirstElementOfArray)
-            let text = self.getLabelText(for: indexPath.row, with: timeAndResult.0, with: timeAndResult.1)
-            cell.setCell(cell, showIndicator: false, backgraundColor: UIColor.white, label: text)
+        DispatchQueue.global().async {
+            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryIdentifiersRepository(rawValue: indexPath.row) ?? .none)
+            DispatchQueue.main.async {
+                let text = self.getLabelText(for: indexPath.row, with: timeAndResult.0, with: timeAndResult.1)
+                cell.setCell(cell, showIndicator: false, backgraundColor: UIColor.white, label: text)
+            }
         }
     }
 }
