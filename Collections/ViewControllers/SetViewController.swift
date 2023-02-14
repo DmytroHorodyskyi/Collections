@@ -26,7 +26,7 @@ class SetViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func removeDigits(from string: String) -> String{
+    private func removeDigits(from string: String) -> String{
         string.components(separatedBy: CharacterSet.decimalDigits).joined()
     }
     

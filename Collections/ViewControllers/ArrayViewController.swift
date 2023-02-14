@@ -31,7 +31,7 @@ class ArrayViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    func getLabelText(for cell: Int, with time: String) -> String {
+    private func getLabelText(for cell: Int, with time: String) -> String {
         switch cell {
         case 0:
             return "Array creation time: \(time) ms."
@@ -48,8 +48,8 @@ class ArrayViewController: UIViewController {
 
 extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         switch indexPath.row {
         case 0 :
             let cellSize = CGSize(width: (collectionView.bounds.width) , height: (collectionView.bounds.height) / 8 )
@@ -76,12 +76,10 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? ArrayCollectionViewCell else {return}
         cell.setCell(cell, showIndicator: true, label: "")
-        var time = String()
-        var text = String()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [self] in
-            time = self.arrayService.getTimeOf(function: IdentifiersRepository(rawValue: indexPath.row) ?? .generateArray)
-            text = self.getLabelText(for: indexPath.row, with: time)
+            let time = self.arrayService.getTimeOf(function: ArrayIdentifiersRepository(rawValue: indexPath.row) ?? .generateArray)
+            let text = self.getLabelText(for: indexPath.row, with: time)
             if !cellName.contains(namesOfSecondaryCells) {
                 cellName.append(contentsOf: namesOfSecondaryCells)
             }

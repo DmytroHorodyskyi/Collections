@@ -86,9 +86,9 @@
 				74FB9F2D2992642D00E90AE2 /* MainTabelViewController.swift */,
 				74CE1CF72994129A00408A6E /* ArrayViewController.swift */,
 				74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */,
-				74EEE46B299AE95D0011AACB /* DictioonaryViewControllerCell.swift */,
 				743C9DD62994EC9900E0D84B /* SetViewController.swift */,
 				743C9DDF2995318900E0D84B /* DictionaryViewController.swift */,
+				74EEE46B299AE95D0011AACB /* DictioonaryViewControllerCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

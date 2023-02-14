@@ -7,7 +7,17 @@
 
 import Foundation
 
+enum DictionaryIdentifiersRepository: Int {
+    case findFirstElementOfArray = 0
+    case findFirstElementOfDictinary = 1
+    case findLastElementOfArray = 2
+    case findLastElementOfDictionary = 3
+    case searchForNonExistingElementOfArray = 4
+    case searchForNonExistingElementOfDictionary = 5
+}
+
 struct DictionaryService {
+    
     var arrayOfNames = [String]()
     var arrayOfPhones = [String]()
     var dictionaryOfContacts = [String:String]()
@@ -18,61 +28,61 @@ struct DictionaryService {
                 arrayOfPhones.append("+38 050 \(element)")
                 dictionaryOfContacts["Name\(element)"] = "+38 050 \(element)"
         }
+        print("generateCollectionsOf")
     }
     
-    func findFirstElementOfArray() -> String {
+    private func findFirstElementOfArray() -> String {
         guard let index = arrayOfNames.firstIndex(of: "Name0")
         else { return "does not exist" }
             return arrayOfPhones[index]
     }
     
-    func findFirstElementOfDictinary() -> String {
+    private func findFirstElementOfDictinary() -> String {
         dictionaryOfContacts["Name0"] ?? ""
     }
     
-    func findLastElementOfArray() -> String {
+    private func findLastElementOfArray() -> String {
         guard let index = arrayOfNames.firstIndex(of: "Name999999")
         else { return "does not exist" }
             return arrayOfPhones[index]
     }
     
-    func findLastElementOfDictionary() -> String {
+    private func findLastElementOfDictionary() -> String {
         dictionaryOfContacts["Name999999"] ?? ""
     }
     
-    func searchForNonExistingElementOfArray() -> String {
+    private func searchForNonExistingElementOfArray() -> String {
         guard let index = arrayOfNames.firstIndex(of: "Unknown Name")
         else { return "does not exist" }
             return arrayOfPhones[index]
 
     }
     
-    func searchForNonExistingElementOfDictionary() -> String {
+    private func searchForNonExistingElementOfDictionary() -> String {
         dictionaryOfContacts["Unknown Name"] ?? "does not exist"
     }
     
-    func doFunction(at index: Int) -> String {
-        switch index {
-        case 0:
+    private func runOperation(at identifiersRepository: DictionaryIdentifiersRepository) -> String {
+        switch identifiersRepository {
+        case .findFirstElementOfArray:
             return findFirstElementOfArray()
-        case 1:
+        case .findFirstElementOfDictinary:
             return findFirstElementOfDictinary()
-        case 2:
+        case .findLastElementOfArray:
             return findLastElementOfArray()
-        case 3:
+        case .findLastElementOfDictionary:
             return findLastElementOfDictionary()
-        case 4:
+        case .searchForNonExistingElementOfArray:
             return searchForNonExistingElementOfArray()
-        case 5:
+        case .searchForNonExistingElementOfDictionary:
             return searchForNonExistingElementOfDictionary()
-        default:
-            return ""
+
         }
     }
     
-    func getTimeAndResultOf(function number: Int) -> (String, String) {
+    func getTimeAndResultOf(function identifier: DictionaryIdentifiersRepository) -> (String, String) {
         let start = DispatchTime.now()
-        let result = doFunction(at: number)
+        let result = runOperation(at: identifier)
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000

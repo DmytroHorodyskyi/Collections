@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum IdentifiersRepository: Int {
+enum ArrayIdentifiersRepository: Int {
     case generateArray = 0
     case insertAtTheBeginigOneByOne = 1
     case insertAtTheBeginigAtOnce = 2
@@ -105,7 +105,7 @@ struct ArrayService {
     }
     
     
-    private mutating func runOperationWith(at identifiersRepository: IdentifiersRepository) {
+    private mutating func runOperationWith(at identifiersRepository: ArrayIdentifiersRepository) {
         switch identifiersRepository {
         case .generateArray:
             generateArray()
@@ -136,7 +136,7 @@ struct ArrayService {
         }
     }
     
-    mutating func getTimeOf(function identifier: IdentifiersRepository) -> String {
+    mutating func getTimeOf(function identifier: ArrayIdentifiersRepository) -> String {
         let start = DispatchTime.now()
         runOperationWith(at: identifier)
         let end = DispatchTime.now()

@@ -37,7 +37,7 @@ class DictionaryViewController: UIViewController {
         dictionaryCollectionView.isHidden = false
     }
 
-    func getLabelText(for cell: Int, with time: String, with element: String) -> String {
+    private func getLabelText(for cell: Int, with time: String, with element: String) -> String {
         switch cell {
         case 0, 1:
             return "First element search time: \(time) ms. Result number: \(element)"
@@ -58,9 +58,7 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
         CGSize(width: 0, height: 50)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellSize = CGSize(width: ((collectionView.bounds.width) / 2) - 2,
                               height: (collectionView.bounds.height) / 8 )
         return cellSize
@@ -85,17 +83,13 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath) as? DictionaryCollectionViewCell
-        cell?.cellLabel.text = ""
-        cell?.cellActivityIndicator.isHidden = false
-        cell?.cellActivityIndicator.startAnimating()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DictionaryCollectionViewCell else {return}
+        cell.setCell(cell, showIndicator: true, label: "")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: indexPath.row)
-            cell?.cellActivityIndicator.isHidden = true
-            cell?.cellActivityIndicator.stopAnimating()
-            cell?.backgroundColor = UIColor.white
-            cell?.cellLabel.text = self.getLabelText(for: indexPath.row, with: timeAndResult.0, with: timeAndResult.1)
+            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryIdentifiersRepository(rawValue: indexPath.row) ?? .findFirstElementOfArray)
+            let text = self.getLabelText(for: indexPath.row, with: timeAndResult.0, with: timeAndResult.1)
+            cell.setCell(cell, showIndicator: false, backgraundColor: UIColor.white, label: text)
         }
     }
 }
