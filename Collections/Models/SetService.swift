@@ -9,19 +9,19 @@ import Foundation
 
 struct SetService {
     
-    func intesection(in string1: String, and string2: String) -> String {
+    func intersection(_ string1: String, _ string2: String) -> String {
         let mainSet = Set(string1)
         let auxiliarySet = Set(string2)
         return String(mainSet.intersection(auxiliarySet))
     }
 
-    func symmetricDifference(in string1: String, and string2: String) -> String {
+    func symmetricDifference(_ string1: String, _ string2: String) -> String {
         let mainSet = Set(string1)
         let auxiliarySet = Set(string2)
         return String(mainSet.symmetricDifference(auxiliarySet))
     }
     
-    func subtracting(in string1: String, and string2: String) -> String {
+    func subtracting(_ string1: String, _ string2: String) -> String {
         let mainSet = Set(string1)
         let auxiliarySet = Set(string2)
         return String(mainSet.subtracting(auxiliarySet))

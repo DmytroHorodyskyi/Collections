@@ -9,14 +9,19 @@ import UIKit
 
 class DictionaryViewController: UIViewController {
     
+    enum DictionaryIdentifiersRepository: String, CaseIterable {
+        case findFirstElement = "Find the first contact"
+        case findLastElement = "Find the last contact"
+        case searchForNonExistingElement = "Search for a non-existing element"
+        case none
+    }
     @IBOutlet weak var mainActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dictionaryCollectionView: UICollectionView!
-    var dictionaryService = DictionaryService()
-    let cellName = [
-        "Find the first contact",
-        "Find the last contact",
-        "Search for a non-existing element"
-    ]
+    private var dictionaryService = DictionaryService()
+    private let cellNames: [String] = DictionaryIdentifiersRepository
+        .allCases
+        .filter() {$0 != .none}
+        .map() {$0.rawValue}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +36,7 @@ class DictionaryViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dictionaryService.generateCollectionsOf(10_000_000)
+        dictionaryService.generateCollections()
         mainActivityIndicator.isHidden = true
         mainActivityIndicator.stopAnimating()
         dictionaryCollectionView.isHidden = false
@@ -70,27 +75,28 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellName.count * 2
+        return cellNames.count * 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DictionaryCell", for: indexPath) as? DictionaryCollectionViewCell
-        cell?.cellLabel.text = cellName[indexPath.row / 2]
-        cell?.backgroundColor = UIColor.lightGray
-        cell?.cellActivityIndicator.isHidden = true
-        return cell ?? UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DictionaryCell", for: indexPath) as? DictionaryCollectionViewCell else {return UICollectionViewCell()}
+        cell.cellLabel.text = cellNames[indexPath.row / 2]
+        cell.backgroundColor = UIColor.lightGray
+        cell.cellActivityIndicator.isHidden = true
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? DictionaryCollectionViewCell else {return}
-        cell.setCell(cell, showIndicator: true, label: "")
+        cell.setUpCell(showIndicator: true, label: "")
         
         DispatchQueue.global().async {
-            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryIdentifiersRepository(rawValue: indexPath.row) ?? .none)
+            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryViewController.DictionaryIdentifiersRepository(rawValue: self.cellNames[indexPath.row / 2]) ?? .none, ofArray: indexPath.row % 2 == 0)
+            
             DispatchQueue.main.async {
                 let text = self.getLabelText(for: indexPath.row, with: timeAndResult.0, with: timeAndResult.1)
-                cell.setCell(cell, showIndicator: false, backgraundColor: UIColor.white, label: text)
+                cell.setUpCell(showIndicator: false, label: text)
             }
         }
     }

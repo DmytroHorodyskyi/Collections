@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabelViewController: UITableViewController {
+class MainTableViewController: UITableViewController {
     
     @IBOutlet var mainTableView: UITableView!
     
@@ -16,7 +16,7 @@ class MainTabelViewController: UITableViewController {
         self.tableView.tableHeaderView = createHeaderWithLabel(text: "Collections", fontSize: 34, fontWeight: .bold)
     }
     
-    func createHeaderWithLabel(text: String, fontSize:  CGFloat, fontWeight: UIFont.Weight) -> UIView {
+    private func createHeaderWithLabel(text: String, fontSize:  CGFloat, fontWeight: UIFont.Weight) -> UIView {
         let headerView = UIView(frame: CGRect(x: 0, y: 0,
                                               width: self.tableView.frame.width, height: 40))
         let label = UILabel(frame: CGRect(x: 16, y: 10,

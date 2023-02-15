@@ -9,24 +9,30 @@ import UIKit
 
 class ArrayViewController: UIViewController {
     
+     enum ArrayIdentifiersRepository: String, CaseIterable {
+        case generateArray = "Create Int array with 10_000_000 elements"
+        case insertAtTheBeginigOneByOne = "Insert at the beginning of an array 1000 elements one-by-one"
+        case insertAtTheBeginigAtOnce = "Insert at the beginning of an array 1000 elements at once"
+        case insertInTheMiddleOneByOne = "Insert in the middle of an array 1000 elements one-by-one"
+        case insertInTheMiddleAtOnce = "Insert in the middle of an array 1000 elements at once"
+        case appendToTheEndOneByOne = "Append to the end of an array 1000 elements one-by-one"
+        case appendToTheEndAtOnce = "Append to the end of an array 1000 elements at once"
+        case removeAtTheBeginingOneByOne = "Remove at the beginning 1000 elements one-by-one"
+        case removeAtTheBeginigAtOnce = "Remove at the beginning 1000 elements at once"
+        case removeInTheMiddleOneByOne = "Remove in the middle 1000 elements one-by-one"
+        case removeInTheMiddleAtOnce = "Remove in the middle 1000 elements at once"
+        case removeAtTheEndOneByOne = "Remove at the end 1000 elements one-by-one"
+        case removeAtTheEndAtOnce = "Remove at the end 1000 elements at once"
+        case none
+    }
+
     @IBOutlet weak var arrayCollectionView: UICollectionView!
-    var arrayService = ArrayService()
-    var time = String()
-    var cellName = ["Create Int array with 10_000_000 elements"]
-    let namesOfSecondaryCells = [
-        "Insert at the beginning of an array 1000 elements one-by-one",
-        "Insert at the beginning of an array 1000 elements at once",
-        "Insert in the middle of an array 1000 elements one-by-on,e",
-        "Insert in the middle of an array 1000 elements at once",
-        "Append to the end of an array 1000 elements one-by-one",
-        "Append to the end of an array 1000 elements at once",
-        "Remove at the beginning 1000 elements one-by-one",
-        "Remove at the beginning 1000 elements at once",
-        "Remove in the middle 1000 elements one-by-one",
-        "Remove in the middle 1000 elements at once",
-        "Remove at the end 1000 elements one-by-one",
-        "Remove at the end 1000 elements at once"
-    ]
+    private var arrayService = ArrayService()
+    private var declaredCellNames = ["Create Int array with 10_000_000 elements"]
+    private let undeclaredCellNames: [String] = ArrayIdentifiersRepository
+        .allCases
+        .filter() {$0 != .generateArray && $0 != .none}
+        .map() {$0.rawValue}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,32 +68,31 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellName.count
+        return declaredCellNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayCell", for: indexPath) as? ArrayCollectionViewCell
-        cell?.backgroundColor = UIColor.lightGray
-        cell?.cellLabel.text = cellName[indexPath.row]
-        cell?.cellActivityIndicator.isHidden = true
-        return cell ?? UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArrayCell", for: indexPath) as? ArrayCollectionViewCell else {return UICollectionViewCell()}
+        cell.cellView.backgroundColor = UIColor.lightGray
+        cell.cellLabel.text = declaredCellNames[indexPath.row]
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ArrayCollectionViewCell else {return}
-        cell.setCell(cell, showIndicator: true, label: "")
+        cell.setUpCell(showIndicator: true, label: "")
         
         DispatchQueue.global().async {
-                self.time = self.arrayService.getTimeOf(function: ArrayIdentifiersRepository(rawValue: indexPath.row) ?? .none)
+            let time = self.arrayService.getTimeOf(function: ArrayViewController.ArrayIdentifiersRepository(rawValue: self.declaredCellNames[indexPath.row]) ?? .none)
+            
             DispatchQueue.main.async { [self] in
-            let text = self.getLabelText(for: indexPath.row, with: time)
-            if !cellName.contains(namesOfSecondaryCells) {
-                cellName.append(contentsOf: namesOfSecondaryCells)
-            }
-            if indexPath.row == 0 {
+                let text = self.getLabelText(for: indexPath.row, with: time)
+                cell.setUpCell(showIndicator: false, label: text)
+                guard indexPath.row == 0 else {return}
+                if !declaredCellNames.contains(undeclaredCellNames) {
+                    declaredCellNames.append(contentsOf: undeclaredCellNames)
+                }
                 collectionView.reloadData()
-            }
-            cell.setCell(cell, showIndicator: false, backgraundColor: .white, label: text)
             }
         }
     }

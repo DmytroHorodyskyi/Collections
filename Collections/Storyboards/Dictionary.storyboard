@@ -40,10 +40,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0db-7Q-n74">
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0db-7Q-n74">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </activityIndicatorView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="Qfm-xP-Xo9" firstAttribute="top" secondItem="u1v-iN-QlF" secondAttribute="top" id="23Q-Y8-fQ2"/>
                                                 <constraint firstItem="0db-7Q-n74" firstAttribute="leading" secondItem="u1v-iN-QlF" secondAttribute="leading" id="9fg-Ms-tni"/>
@@ -96,7 +97,7 @@
                                     <outlet property="delegate" destination="VzQ-1L-9K8" id="IrV-cI-LXv"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="4aA-KM-jRZ">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="4aA-KM-jRZ">
                                 <rect key="frame" x="0.0" y="68" width="393" height="715"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>

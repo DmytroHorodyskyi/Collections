@@ -7,35 +7,22 @@
 
 import Foundation
 
-enum DictionaryIdentifiersRepository: Int {
-    case findFirstElementOfArray = 0
-    case findFirstElementOfDictinary = 1
-    case findLastElementOfArray = 2
-    case findLastElementOfDictionary = 3
-    case searchForNonExistingElementOfArray = 4
-    case searchForNonExistingElementOfDictionary = 5
-    case none
-}
-
 struct DictionaryService {
     
-    var arrayOfNames = [String]()
-    var arrayOfPhones = [String]()
-    var dictionaryOfContacts = [String:String]()
+    private var arrayOfNames = [String]()
+    private var arrayOfPhones = [String]()
+    private var dictionaryOfContacts = [String:String]()
     
-    mutating func generateCollectionsOf(_ quantity: Int) {
-        for element in 0..<quantity {
-                arrayOfNames.append("Name\(element)")
-                arrayOfPhones.append("+38 050 \(element)")
-                dictionaryOfContacts["Name\(element)"] = "+38 050 \(element)"
+    mutating func generateCollections() {
+        for element in 0..<10_000_000 {
+            arrayOfNames.append("Name\(element)")
+            arrayOfPhones.append("+38 050 \(element)")
+            dictionaryOfContacts["Name\(element)"] = "+38 050 \(element)"
         }
-        print("generateCollectionsOf")
     }
     
     private func findFirstElementOfArray() -> String {
-        guard let index = arrayOfNames.firstIndex(of: "Name0")
-        else { return "does not exist" }
-            return arrayOfPhones[index]
+        arrayOfPhones[arrayOfNames.firstIndex(of: "Name0") ?? 0]
     }
     
     private func findFirstElementOfDictinary() -> String {
@@ -43,9 +30,7 @@ struct DictionaryService {
     }
     
     private func findLastElementOfArray() -> String {
-        guard let index = arrayOfNames.firstIndex(of: "Name999999")
-        else { return "does not exist" }
-            return arrayOfPhones[index]
+        arrayOfPhones[arrayOfNames.firstIndex(of: "Name999999") ?? 0]
     }
     
     private func findLastElementOfDictionary() -> String {
@@ -53,38 +38,36 @@ struct DictionaryService {
     }
     
     private func searchForNonExistingElementOfArray() -> String {
-        guard let index = arrayOfNames.firstIndex(of: "Unknown Name")
-        else { return "does not exist" }
-            return arrayOfPhones[index]
-
+        arrayOfPhones[arrayOfNames.firstIndex(of: "Unknown Name") ?? 0]
+        
     }
     
     private func searchForNonExistingElementOfDictionary() -> String {
         dictionaryOfContacts["Unknown Name"] ?? "does not exist"
     }
     
-    private func runOperation(at identifiersRepository: DictionaryIdentifiersRepository) -> String {
-        switch identifiersRepository {
-        case .findFirstElementOfArray:
+    private func runOperation(at identifiersRepository: DictionaryViewController.DictionaryIdentifiersRepository, ofArray: Bool) -> String {
+        switch (identifiersRepository, ofArray) {
+        case (.findFirstElement, true):
             return findFirstElementOfArray()
-        case .findFirstElementOfDictinary:
+        case (.findFirstElement, false):
             return findFirstElementOfDictinary()
-        case .findLastElementOfArray:
+        case (.findLastElement, true):
             return findLastElementOfArray()
-        case .findLastElementOfDictionary:
+        case (.findLastElement, false):
             return findLastElementOfDictionary()
-        case .searchForNonExistingElementOfArray:
+        case (.searchForNonExistingElement, true):
             return searchForNonExistingElementOfArray()
-        case .searchForNonExistingElementOfDictionary:
+        case (.searchForNonExistingElement, false):
             return searchForNonExistingElementOfDictionary()
-        case .none:
+        case (.none, _):
             return ""
         }
     }
     
-    func getTimeAndResultOf(function identifier: DictionaryIdentifiersRepository) -> (String, String) {
+    func getTimeAndResultOf(function identifier: DictionaryViewController.DictionaryIdentifiersRepository, ofArray: Bool) -> (String, String) {
         let start = DispatchTime.now()
-        let result = runOperation(at: identifier)
+        let result = runOperation(at: identifier, ofArray: ofArray)
         let end = DispatchTime.now()
         let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
         let timeInterval = Double(nanoTime) / 1_000_000

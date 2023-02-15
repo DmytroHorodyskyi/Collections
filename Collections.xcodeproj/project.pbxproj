@@ -21,7 +21,7 @@
 		74FB9F1F299252C300E90AE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FB9F1D299252C300E90AE2 /* Main.storyboard */; };
 		74FB9F21299252C400E90AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74FB9F20299252C400E90AE2 /* Assets.xcassets */; };
 		74FB9F24299252C400E90AE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FB9F22299252C400E90AE2 /* LaunchScreen.storyboard */; };
-		74FB9F2E2992642D00E90AE2 /* MainTabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FB9F2D2992642D00E90AE2 /* MainTabelViewController.swift */; };
+		74FB9F2E2992642D00E90AE2 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FB9F2D2992642D00E90AE2 /* MainTableViewController.swift */; };
 		74FB9F3229926D4900E90AE2 /* Set.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FB9F3129926D4900E90AE2 /* Set.storyboard */; };
 		74FB9F3429926D5D00E90AE2 /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FB9F3329926D5D00E90AE2 /* Dictionary.storyboard */; };
 /* End PBXBuildFile section */
@@ -43,7 +43,7 @@
 		74FB9F20299252C400E90AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74FB9F23299252C400E90AE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74FB9F25299252C400E90AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		74FB9F2D2992642D00E90AE2 /* MainTabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabelViewController.swift; sourceTree = "<group>"; };
+		74FB9F2D2992642D00E90AE2 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		74FB9F3129926D4900E90AE2 /* Set.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Set.storyboard; sourceTree = "<group>"; };
 		74FB9F3329926D5D00E90AE2 /* Dictionary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dictionary.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,7 +83,7 @@
 		74DC80B82992967D009F3435 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				74FB9F2D2992642D00E90AE2 /* MainTabelViewController.swift */,
+				74FB9F2D2992642D00E90AE2 /* MainTableViewController.swift */,
 				74CE1CF72994129A00408A6E /* ArrayViewController.swift */,
 				74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */,
 				743C9DD62994EC9900E0D84B /* SetViewController.swift */,
@@ -207,7 +207,7 @@
 				74EEE46A299A96460011AACB /* ArrayCollectionViewCell.swift in Sources */,
 				743C9DDC2994ED6200E0D84B /* SetService.swift in Sources */,
 				743C9DDE2994ED7200E0D84B /* DictionaryService.swift in Sources */,
-				74FB9F2E2992642D00E90AE2 /* MainTabelViewController.swift in Sources */,
+				74FB9F2E2992642D00E90AE2 /* MainTableViewController.swift in Sources */,
 				74EEE46C299AE95D0011AACB /* DictionaryCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

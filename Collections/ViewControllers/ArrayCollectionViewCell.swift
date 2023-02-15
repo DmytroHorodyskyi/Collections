@@ -13,17 +13,15 @@ class ArrayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cellLabel: UILabel!
     
-    func setCell(_ cell: ArrayCollectionViewCell, showIndicator indicator: Bool, backgraundColor color: UIColor? = nil, label text: String) {
+    func setUpCell(showIndicator indicator: Bool, label text: String) {
         if indicator {
-            cell.cellActivityIndicator.isHidden = false
-            cell.cellActivityIndicator.startAnimating()
+            self.cellActivityIndicator.isHidden = false
+            self.cellActivityIndicator.startAnimating()
         } else {
-            cell.cellActivityIndicator.stopAnimating()
-            cell.cellActivityIndicator.isHidden = true
+            self.cellActivityIndicator.stopAnimating()
+            self.cellActivityIndicator.isHidden = true
+            cellView.backgroundColor = UIColor.white
         }
-        if let color = color {
-            cell.backgroundColor = color
-        }
-        cell.cellLabel.text = text
+        self.cellLabel.text = text
     }
 }

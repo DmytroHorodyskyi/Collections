@@ -7,23 +7,6 @@
 
 import Foundation
 
-enum ArrayIdentifiersRepository: Int {
-    case generateArray = 0
-    case insertAtTheBeginigOneByOne = 1
-    case insertAtTheBeginigAtOnce = 2
-    case insertInTheMiddleOneByOne = 3
-    case insertInTheMiddleAtOnce = 4
-    case appendToTheEndOneByOne = 5
-    case appendToTheEndAtOnce = 6
-    case removeAtTheBeginingOneByOne = 7
-    case removeAtTheBeginigAtOnce = 8
-    case removeInTheMiddleOneByOne = 9
-    case removeInTheMiddleAtOnce = 10
-    case removeAtTheEndOneByOne = 11
-    case removeAtTheEndAtOnce = 12
-    case none
-}
-
 struct ArrayService {
     
     private var array = [Int]()
@@ -48,15 +31,13 @@ struct ArrayService {
     }
     
     private mutating func insertInTheMiddleOneByOne() {
-        let middleIndex = (array.count - 1) / 2
         for (index, element) in auxiliaryArray.enumerated() {
-            array.insert(element, at: middleIndex + index)
+            array.insert(element, at: (array.count - 1) / 2 + index)
         }
     }
     
     private mutating func insertInTheMiddleAtOnce() {
-        let middleIndex = (array.count - 1) / 2
-        array.insert(contentsOf: auxiliaryArray, at: middleIndex)
+        array.insert(contentsOf: auxiliaryArray, at: (array.count - 1) / 2)
     }
     
     private mutating func appendToTheEndOneByOne() {
@@ -90,8 +71,7 @@ struct ArrayService {
     
     private mutating func removeInTheMiddleAtOnce() {
         guard array.contains(1000) else {return}
-        let middleIndex = (array.count - 1) / 2
-        array.removeSubrange((middleIndex - 500)...(middleIndex + 500))
+        array.removeSubrange(((array.count - 1) / 2 - 500)...((array.count - 1) / 2 + 500))
     }
     
     private mutating func removeAtTheEndOneByOne() {
@@ -107,7 +87,7 @@ struct ArrayService {
     }
     
     
-    private mutating func runOperationWith(at identifiersRepository: ArrayIdentifiersRepository) {
+    private mutating func runOperationWith(at identifiersRepository: ArrayViewController.ArrayIdentifiersRepository) {
         
         switch identifiersRepository {
         case .generateArray:
@@ -141,7 +121,7 @@ struct ArrayService {
         }
     }
     
-    mutating func getTimeOf(function identifier: ArrayIdentifiersRepository) -> String {
+    mutating func getTimeOf(function identifier: ArrayViewController.ArrayIdentifiersRepository) -> String {
         arrayOperationsQueue.sync {
             let start = DispatchTime.now()
             runOperationWith(at: identifier)
