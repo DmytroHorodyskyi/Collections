@@ -133,4 +133,10 @@ struct ArrayService {
     }
 }
 
-
+#if DEBUG
+extension ArrayService {
+    public mutating func privateGenerateArray() {
+        self.generateArray()
+    }
+}
+#endif
