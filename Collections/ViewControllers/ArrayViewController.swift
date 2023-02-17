@@ -9,23 +9,6 @@ import UIKit
 
 class ArrayViewController: UIViewController {
     
-    enum ArrayIdentifiersRepository: String, CaseIterable {
-        case generateArray = "Create Int array with 10_000_000 elements"
-        case insertAtTheBeginigOneByOne = "Insert at the beginning of an array 1000 elements one-by-one"
-        case insertAtTheBeginigAtOnce = "Insert at the beginning of an array 1000 elements at once"
-        case insertInTheMiddleOneByOne = "Insert in the middle of an array 1000 elements one-by-one"
-        case insertInTheMiddleAtOnce = "Insert in the middle of an array 1000 elements at once"
-        case appendToTheEndOneByOne = "Append to the end of an array 1000 elements one-by-one"
-        case appendToTheEndAtOnce = "Append to the end of an array 1000 elements at once"
-        case removeAtTheBeginingOneByOne = "Remove at the beginning 1000 elements one-by-one"
-        case removeAtTheBeginigAtOnce = "Remove at the beginning 1000 elements at once"
-        case removeInTheMiddleOneByOne = "Remove in the middle 1000 elements one-by-one"
-        case removeInTheMiddleAtOnce = "Remove in the middle 1000 elements at once"
-        case removeAtTheEndOneByOne = "Remove at the end 1000 elements one-by-one"
-        case removeAtTheEndAtOnce = "Remove at the end 1000 elements at once"
-        case none
-    }
-    
     @IBOutlet weak var arrayCollectionView: UICollectionView!
     private var arrayIsCreated = false
     private var arrayService = ArrayService()
@@ -78,13 +61,9 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         if indexPath.row == 0 && arrayIsCreated {
             return cell
         } else {
-            cell.cellLabel.text = declaredCellNames[indexPath.row]
-            cell.cellView.backgroundColor = UIColor.lightGray
+            cell.setUpCell(label: declaredCellNames[indexPath.row])
             return cell
         }
-//        cell.cellLabel.text = declaredCellNames[indexPath.row]
-//        cell.cellView.backgroundColor = UIColor.lightGray
-//        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -92,7 +71,7 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
         cell.setUpCell(showIndicator: true, label: "")
         
         DispatchQueue.global().async {
-            let time = self.arrayService.getTimeOf(function: ArrayViewController.ArrayIdentifiersRepository(rawValue: self.declaredCellNames[indexPath.row]) ?? .none)
+            let time = self.arrayService.getTimeOf(function: ArrayIdentifiersRepository(rawValue: self.declaredCellNames[indexPath.row]) ?? .none)
             
             DispatchQueue.main.async { [self] in
                 let text = self.getLabelText(for: indexPath.row, with: time)
@@ -101,12 +80,8 @@ extension ArrayViewController: UICollectionViewDelegateFlowLayout, UICollectionV
                 if !declaredCellNames.contains(undeclaredCellNames) {
                     declaredCellNames.append(contentsOf: undeclaredCellNames)
                 }
-                
                 arrayIsCreated = true
                 collectionView.reloadData()
-//                for cell in 1..<declaredCellNames.count {
-//                    collectionView.reloadItems(at: [IndexPath(row: cell, section: 0)])
-//                }
             }
         }
     }

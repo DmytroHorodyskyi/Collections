@@ -46,7 +46,7 @@ struct DictionaryService {
         dictionaryOfContacts["Unknown Name"] ?? "does not exist"
     }
     
-    private func runOperation(at identifiersRepository: DictionaryViewController.DictionaryIdentifiersRepository, ofArray: Bool) -> String {
+    private func runOperation(at identifiersRepository: DictionaryIdentifiersRepository, ofArray: Bool) -> String {
         switch (identifiersRepository, ofArray) {
         case (.findFirstElement, true):
             return findFirstElementOfArray()
@@ -65,7 +65,7 @@ struct DictionaryService {
         }
     }
     
-    func getTimeAndResultOf(function identifier: DictionaryViewController.DictionaryIdentifiersRepository, ofArray: Bool) -> (String, String) {
+    func getTimeAndResultOf(function identifier: DictionaryIdentifiersRepository, ofArray: Bool) -> (String, String) {
         let start = DispatchTime.now()
         let result = runOperation(at: identifier, ofArray: ofArray)
         let end = DispatchTime.now()

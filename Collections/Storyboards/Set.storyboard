@@ -39,7 +39,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="All matching letters"/>
                                 <connections>
-                                    <action selector="AllMatchingLettersActionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Nir-kw-0Jt"/>
+                                    <action selector="allMatchingLettersActionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ost-pM-U09"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4c-yY-9pQ">
@@ -68,7 +68,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="AllUniquecharactersFromTheFirsttextField:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="alk-RA-aDX"/>
+                                    <action selector="allUniquecharactersFromTheFirsttextField:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0xH-da-PPF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqs-Ot-2cc">
@@ -82,7 +82,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="All characters that do not match"/>
                                 <connections>
-                                    <action selector="AllCharactersThatDoNotMatchButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l6l-AY-hkD"/>
+                                    <action selector="allCharactersThatDoNotMatchButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="J0t-2o-x1b"/>
                                 </connections>
                             </button>
                         </subviews>

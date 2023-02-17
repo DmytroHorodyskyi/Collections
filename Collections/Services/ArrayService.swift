@@ -87,7 +87,7 @@ struct ArrayService {
     }
     
     
-    private mutating func runOperationWith(at identifiersRepository: ArrayViewController.ArrayIdentifiersRepository) {
+    private mutating func runOperationWith(at identifiersRepository: ArrayIdentifiersRepository) {
         
         switch identifiersRepository {
         case .generateArray:
@@ -121,7 +121,7 @@ struct ArrayService {
         }
     }
     
-    mutating func getTimeOf(function identifier: ArrayViewController.ArrayIdentifiersRepository) -> String {
+    mutating func getTimeOf(function identifier: ArrayIdentifiersRepository) -> String {
         arrayOperationsQueue.sync {
             let start = DispatchTime.now()
             runOperationWith(at: identifier)

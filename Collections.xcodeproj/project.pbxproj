@@ -19,6 +19,8 @@
 		74DC80B72992965A009F3435 /* Array.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74DC80B62992965A009F3435 /* Array.storyboard */; };
 		74EEE46A299A96460011AACB /* ArrayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */; };
 		74EEE46C299AE95D0011AACB /* DictionaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEE46B299AE95D0011AACB /* DictionaryCollectionViewCell.swift */; };
+		74F508C2299F71B800F12A62 /* ArrayIdentifiersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F508C1299F71B800F12A62 /* ArrayIdentifiersRepository.swift */; };
+		74F508C4299F725000F12A62 /* DictionaryIdentifiersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F508C3299F725000F12A62 /* DictionaryIdentifiersRepository.swift */; };
 		74FB9F18299252C300E90AE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FB9F17299252C300E90AE2 /* AppDelegate.swift */; };
 		74FB9F1A299252C300E90AE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FB9F19299252C300E90AE2 /* SceneDelegate.swift */; };
 		74FB9F1F299252C300E90AE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74FB9F1D299252C300E90AE2 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		74DC80B62992965A009F3435 /* Array.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Array.storyboard; sourceTree = "<group>"; };
 		74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCollectionViewCell.swift; sourceTree = "<group>"; };
 		74EEE46B299AE95D0011AACB /* DictionaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryCollectionViewCell.swift; sourceTree = "<group>"; };
+		74F508C1299F71B800F12A62 /* ArrayIdentifiersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayIdentifiersRepository.swift; sourceTree = "<group>"; };
+		74F508C3299F725000F12A62 /* DictionaryIdentifiersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryIdentifiersRepository.swift; sourceTree = "<group>"; };
 		74FB9F14299252C300E90AE2 /* Collections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FB9F17299252C300E90AE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74FB9F19299252C300E90AE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,14 +102,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		743C9DD82994ED1800E0D84B /* Models */ = {
+		743C9DD82994ED1800E0D84B /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				743C9DD92994ED3200E0D84B /* ArrayService.swift */,
+				74F508C1299F71B800F12A62 /* ArrayIdentifiersRepository.swift */,
 				743C9DDB2994ED6200E0D84B /* SetService.swift */,
 				743C9DDD2994ED7200E0D84B /* DictionaryService.swift */,
+				74F508C3299F725000F12A62 /* DictionaryIdentifiersRepository.swift */,
 			);
-			path = Models;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		744D9A93299DFB9B008D4787 /* CollectionsTests */ = {
@@ -141,12 +147,19 @@
 			children = (
 				74FB9F2D2992642D00E90AE2 /* MainTableViewController.swift */,
 				74CE1CF72994129A00408A6E /* ArrayViewController.swift */,
-				74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */,
 				743C9DD62994EC9900E0D84B /* SetViewController.swift */,
 				743C9DDF2995318900E0D84B /* DictionaryViewController.swift */,
-				74EEE46B299AE95D0011AACB /* DictionaryCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		74F508C0299F684E00F12A62 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */,
+				74EEE46B299AE95D0011AACB /* DictionaryCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 		74FB9F0B299252C300E90AE2 = {
@@ -174,8 +187,9 @@
 			children = (
 				74FB9F17299252C300E90AE2 /* AppDelegate.swift */,
 				74FB9F19299252C300E90AE2 /* SceneDelegate.swift */,
-				743C9DD82994ED1800E0D84B /* Models */,
+				743C9DD82994ED1800E0D84B /* Services */,
 				74DC80B82992967D009F3435 /* ViewControllers */,
+				74F508C0299F684E00F12A62 /* CollectionViewCells */,
 				749F9E27299294DC001D25E0 /* Storyboards */,
 				74FB9F20299252C400E90AE2 /* Assets.xcassets */,
 				74FB9F22299252C400E90AE2 /* LaunchScreen.storyboard */,
@@ -339,6 +353,7 @@
 				743C9DD72994EC9900E0D84B /* SetViewController.swift in Sources */,
 				743C9DDA2994ED3200E0D84B /* ArrayService.swift in Sources */,
 				74FB9F18299252C300E90AE2 /* AppDelegate.swift in Sources */,
+				74F508C2299F71B800F12A62 /* ArrayIdentifiersRepository.swift in Sources */,
 				74FB9F1A299252C300E90AE2 /* SceneDelegate.swift in Sources */,
 				743C9DE02995318900E0D84B /* DictionaryViewController.swift in Sources */,
 				74EEE46A299A96460011AACB /* ArrayCollectionViewCell.swift in Sources */,
@@ -346,6 +361,7 @@
 				743C9DDE2994ED7200E0D84B /* DictionaryService.swift in Sources */,
 				74FB9F2E2992642D00E90AE2 /* MainTableViewController.swift in Sources */,
 				74EEE46C299AE95D0011AACB /* DictionaryCollectionViewCell.swift in Sources */,
+				74F508C4299F725000F12A62 /* DictionaryIdentifiersRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

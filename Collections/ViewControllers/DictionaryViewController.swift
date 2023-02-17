@@ -9,12 +9,6 @@ import UIKit
 
 class DictionaryViewController: UIViewController {
     
-    enum DictionaryIdentifiersRepository: String, CaseIterable {
-        case findFirstElement = "Find the first contact"
-        case findLastElement = "Find the last contact"
-        case searchForNonExistingElement = "Search for a non-existing element"
-        case none
-    }
     @IBOutlet weak var mainActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var dictionaryCollectionView: UICollectionView!
     private var dictionaryService = DictionaryService()
@@ -27,19 +21,25 @@ class DictionaryViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    private func setUpCollectionViewFor(loading: Bool) {
+        if loading {
+            dictionaryCollectionView.isHidden = true
+            mainActivityIndicator.startAnimating()
+        } else {
+            dictionaryService.generateCollections()
+            mainActivityIndicator.stopAnimating()
+            dictionaryCollectionView.isHidden = false
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        dictionaryCollectionView.isHidden = true
-        mainActivityIndicator.isHidden = false
-        mainActivityIndicator.startAnimating()
+        setUpCollectionViewFor(loading: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dictionaryService.generateCollections()
-        mainActivityIndicator.isHidden = true
-        mainActivityIndicator.stopAnimating()
-        dictionaryCollectionView.isHidden = false
+        setUpCollectionViewFor(loading: false)
     }
 
     private func getLabelText(for cell: Int, with time: String, with element: String) -> String {
@@ -80,9 +80,7 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DictionaryCell", for: indexPath) as? DictionaryCollectionViewCell else {return UICollectionViewCell()}
-        cell.cellLabel.text = cellNames[indexPath.row / 2]
-        cell.backgroundColor = UIColor.lightGray
-        cell.cellActivityIndicator.isHidden = true
+        cell.setUpCell(label: cellNames[indexPath.row / 2])
         return cell
     }
     
@@ -92,7 +90,7 @@ extension DictionaryViewController: UICollectionViewDelegateFlowLayout, UICollec
         cell.setUpCell(showIndicator: true, label: "")
         
         DispatchQueue.global().async {
-            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryViewController.DictionaryIdentifiersRepository(rawValue: self.cellNames[indexPath.row / 2]) ?? .none, ofArray: indexPath.row % 2 == 0)
+            let timeAndResult = self.dictionaryService.getTimeAndResultOf(function: DictionaryIdentifiersRepository(rawValue: self.cellNames[indexPath.row / 2]) ?? .none, ofArray: indexPath.row % 2 == 0)
             
             DispatchQueue.main.async {
                 let text = self.getLabelText(for: indexPath.row, with: timeAndResult.0, with: timeAndResult.1)

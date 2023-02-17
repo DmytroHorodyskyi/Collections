@@ -40,15 +40,15 @@ class SetViewController: UIViewController {
         }
     }
     
-    @IBAction func AllMatchingLettersActionButton(_ sender: UIButton) {
+    @IBAction func allMatchingLettersActionButton(_ sender: UIButton) {
         firstLabel.text = setService.intersection(mainTextField.text ?? "", auxiliaryTextFiled.text ?? "")
     }
     
-    @IBAction func AllCharactersThatDoNotMatchButtonAction(_ sender: UIButton) {
+    @IBAction func allCharactersThatDoNotMatchButtonAction(_ sender: UIButton) {
         secondLabel.text = setService.symmetricDifference(mainTextField.text ?? "", auxiliaryTextFiled.text ?? "")
     }
     
-    @IBAction func AllUniquecharactersFromTheFirsttextField(_ sender: UIButton) {
+    @IBAction func allUniquecharactersFromTheFirsttextField(_ sender: UIButton) {
         thirdLabel.text = setService.subtracting(mainTextField.text ?? "", auxiliaryTextFiled.text ?? "")
     }
 }

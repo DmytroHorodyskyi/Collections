@@ -10,17 +10,19 @@ import UIKit
 
 class DictionaryCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var cellLabel: UILabel!
 
-    func setUpCell(showIndicator indicator: Bool, label text: String) {
-        if indicator {
-            self.cellActivityIndicator.isHidden = false
+    func setUpCell(showIndicator indicator: Bool? = nil, label text: String) {
+        switch indicator {
+        case true:
             self.cellActivityIndicator.startAnimating()
-        } else {
+        case false:
             self.cellActivityIndicator.stopAnimating()
-            self.cellActivityIndicator.isHidden = true
-            self.backgroundColor = UIColor.white
+            cellView.backgroundColor = UIColor.white
+        default:
+            cellView.backgroundColor = UIColor.lightGray
         }
         self.cellLabel.text = text
     }

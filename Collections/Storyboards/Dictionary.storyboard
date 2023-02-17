@@ -59,6 +59,7 @@
                                         <connections>
                                             <outlet property="cellActivityIndicator" destination="0db-7Q-n74" id="Z36-Ab-u1a"/>
                                             <outlet property="cellLabel" destination="Qfm-xP-Xo9" id="kG9-DJ-Mqx"/>
+                                            <outlet property="cellView" destination="u1v-iN-QlF" id="RrO-d8-IbC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
