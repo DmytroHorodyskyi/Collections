@@ -12,9 +12,13 @@
 		743C9DDC2994ED6200E0D84B /* SetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C9DDB2994ED6200E0D84B /* SetService.swift */; };
 		743C9DDE2994ED7200E0D84B /* DictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C9DDD2994ED7200E0D84B /* DictionaryService.swift */; };
 		743C9DE02995318900E0D84B /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C9DDF2995318900E0D84B /* DictionaryViewController.swift */; };
-		744D9A95299DFB9B008D4787 /* CollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D9A94299DFB9B008D4787 /* CollectionsTests.swift */; };
-		744D9AA2299DFBAB008D4787 /* CollectionsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D9AA1299DFBAB008D4787 /* CollectionsUITests.swift */; };
-		744D9AA4299DFBAB008D4787 /* CollectionsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D9AA3299DFBAB008D4787 /* CollectionsUITestsLaunchTests.swift */; };
+		744D9AA2299DFBAB008D4787 /* MainTabelViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D9AA1299DFBAB008D4787 /* MainTabelViewControllerUITests.swift */; };
+		74B536DC29A0145A0033C7BE /* ArrayServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DB29A0145A0033C7BE /* ArrayServiceTests.swift */; };
+		74B536DE29A014770033C7BE /* SetServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DD29A014770033C7BE /* SetServiceTests.swift */; };
+		74B536E029A014AC0033C7BE /* DictionaryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DF29A014AC0033C7BE /* DictionaryServiceTests.swift */; };
+		74B536E429A018730033C7BE /* ArrayViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536E229A0184E0033C7BE /* ArrayViewControllerUITests.swift */; };
+		74B536E629A018900033C7BE /* SetViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536E529A018900033C7BE /* SetViewControllerUITests.swift */; };
+		74B536E829A018AF0033C7BE /* DictionaryViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536E729A018AF0033C7BE /* DictionaryViewControllerUITests.swift */; };
 		74CE1CF82994129A00408A6E /* ArrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CE1CF72994129A00408A6E /* ArrayViewController.swift */; };
 		74DC80B72992965A009F3435 /* Array.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74DC80B62992965A009F3435 /* Array.storyboard */; };
 		74EEE46A299A96460011AACB /* ArrayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */; };
@@ -55,10 +59,14 @@
 		743C9DDD2994ED7200E0D84B /* DictionaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryService.swift; sourceTree = "<group>"; };
 		743C9DDF2995318900E0D84B /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
 		744D9A92299DFB9B008D4787 /* CollectionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		744D9A94299DFB9B008D4787 /* CollectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsTests.swift; sourceTree = "<group>"; };
 		744D9A9F299DFBAB008D4787 /* CollectionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		744D9AA1299DFBAB008D4787 /* CollectionsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsUITests.swift; sourceTree = "<group>"; };
-		744D9AA3299DFBAB008D4787 /* CollectionsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		744D9AA1299DFBAB008D4787 /* MainTabelViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabelViewControllerUITests.swift; sourceTree = "<group>"; };
+		74B536DB29A0145A0033C7BE /* ArrayServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayServiceTests.swift; sourceTree = "<group>"; };
+		74B536DD29A014770033C7BE /* SetServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetServiceTests.swift; sourceTree = "<group>"; };
+		74B536DF29A014AC0033C7BE /* DictionaryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryServiceTests.swift; sourceTree = "<group>"; };
+		74B536E229A0184E0033C7BE /* ArrayViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayViewControllerUITests.swift; sourceTree = "<group>"; };
+		74B536E529A018900033C7BE /* SetViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewControllerUITests.swift; sourceTree = "<group>"; };
+		74B536E729A018AF0033C7BE /* DictionaryViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewControllerUITests.swift; sourceTree = "<group>"; };
 		74CE1CF72994129A00408A6E /* ArrayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayViewController.swift; sourceTree = "<group>"; };
 		74DC80B62992965A009F3435 /* Array.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Array.storyboard; sourceTree = "<group>"; };
 		74EEE469299A96460011AACB /* ArrayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -106,10 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				743C9DD92994ED3200E0D84B /* ArrayService.swift */,
-				74F508C1299F71B800F12A62 /* ArrayIdentifiersRepository.swift */,
 				743C9DDB2994ED6200E0D84B /* SetService.swift */,
 				743C9DDD2994ED7200E0D84B /* DictionaryService.swift */,
-				74F508C3299F725000F12A62 /* DictionaryIdentifiersRepository.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -117,7 +123,9 @@
 		744D9A93299DFB9B008D4787 /* CollectionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				744D9A94299DFB9B008D4787 /* CollectionsTests.swift */,
+				74B536DB29A0145A0033C7BE /* ArrayServiceTests.swift */,
+				74B536DD29A014770033C7BE /* SetServiceTests.swift */,
+				74B536DF29A014AC0033C7BE /* DictionaryServiceTests.swift */,
 			);
 			path = CollectionsTests;
 			sourceTree = "<group>";
@@ -125,8 +133,10 @@
 		744D9AA0299DFBAB008D4787 /* CollectionsUITests */ = {
 			isa = PBXGroup;
 			children = (
-				744D9AA1299DFBAB008D4787 /* CollectionsUITests.swift */,
-				744D9AA3299DFBAB008D4787 /* CollectionsUITestsLaunchTests.swift */,
+				744D9AA1299DFBAB008D4787 /* MainTabelViewControllerUITests.swift */,
+				74B536E229A0184E0033C7BE /* ArrayViewControllerUITests.swift */,
+				74B536E529A018900033C7BE /* SetViewControllerUITests.swift */,
+				74B536E729A018AF0033C7BE /* DictionaryViewControllerUITests.swift */,
 			);
 			path = CollectionsUITests;
 			sourceTree = "<group>";
@@ -140,6 +150,15 @@
 				74FB9F3329926D5D00E90AE2 /* Dictionary.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		74B536E129A017200033C7BE /* IdentifiersReposytories */ = {
+			isa = PBXGroup;
+			children = (
+				74F508C1299F71B800F12A62 /* ArrayIdentifiersRepository.swift */,
+				74F508C3299F725000F12A62 /* DictionaryIdentifiersRepository.swift */,
+			);
+			path = IdentifiersReposytories;
 			sourceTree = "<group>";
 		};
 		74DC80B82992967D009F3435 /* ViewControllers */ = {
@@ -188,6 +207,7 @@
 				74FB9F17299252C300E90AE2 /* AppDelegate.swift */,
 				74FB9F19299252C300E90AE2 /* SceneDelegate.swift */,
 				743C9DD82994ED1800E0D84B /* Services */,
+				74B536E129A017200033C7BE /* IdentifiersReposytories */,
 				74DC80B82992967D009F3435 /* ViewControllers */,
 				74F508C0299F684E00F12A62 /* CollectionViewCells */,
 				749F9E27299294DC001D25E0 /* Storyboards */,
@@ -332,7 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				744D9A95299DFB9B008D4787 /* CollectionsTests.swift in Sources */,
+				74B536E029A014AC0033C7BE /* DictionaryServiceTests.swift in Sources */,
+				74B536DC29A0145A0033C7BE /* ArrayServiceTests.swift in Sources */,
+				74B536DE29A014770033C7BE /* SetServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,8 +362,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				744D9AA4299DFBAB008D4787 /* CollectionsUITestsLaunchTests.swift in Sources */,
-				744D9AA2299DFBAB008D4787 /* CollectionsUITests.swift in Sources */,
+				74B536E629A018900033C7BE /* SetViewControllerUITests.swift in Sources */,
+				74B536E429A018730033C7BE /* ArrayViewControllerUITests.swift in Sources */,
+				74B536E829A018AF0033C7BE /* DictionaryViewControllerUITests.swift in Sources */,
+				744D9AA2299DFBAB008D4787 /* MainTabelViewControllerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

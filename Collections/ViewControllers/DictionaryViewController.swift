@@ -26,7 +26,7 @@ class DictionaryViewController: UIViewController {
             dictionaryCollectionView.isHidden = true
             mainActivityIndicator.startAnimating()
         } else {
-            dictionaryService.generateCollections()
+            dictionaryService.generateCollections(of: dictionaryService.collectionsSize)
             mainActivityIndicator.stopAnimating()
             dictionaryCollectionView.isHidden = false
         }

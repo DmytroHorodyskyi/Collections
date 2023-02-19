@@ -12,9 +12,10 @@ struct DictionaryService {
     private var arrayOfNames = [String]()
     private var arrayOfPhones = [String]()
     private var dictionaryOfContacts = [String:String]()
-    
-    mutating func generateCollections() {
-        for element in 0..<10_000_000 {
+    public let collectionsSize = 10_000_000
+
+    mutating func generateCollections(of numbers: Int) {
+        for element in 0..<numbers {
             arrayOfNames.append("Name\(element)")
             arrayOfPhones.append("+38 050 \(element)")
             dictionaryOfContacts["Name\(element)"] = "+38 050 \(element)"
@@ -22,7 +23,8 @@ struct DictionaryService {
     }
     
     private func findFirstElementOfArray() -> String {
-        arrayOfPhones[arrayOfNames.firstIndex(of: "Name0") ?? 0]
+        guard let index = arrayOfNames.firstIndex(of: "Name0") else {return "does not exist"}
+        return arrayOfPhones[index]
     }
     
     private func findFirstElementOfDictinary() -> String {
@@ -30,16 +32,17 @@ struct DictionaryService {
     }
     
     private func findLastElementOfArray() -> String {
-        arrayOfPhones[arrayOfNames.firstIndex(of: "Name999999") ?? 0]
+        guard let index = arrayOfNames.firstIndex(of: "Name\(arrayOfNames.count - 1)") else {return "does not exist"}
+        return arrayOfPhones[index]
     }
     
     private func findLastElementOfDictionary() -> String {
-        dictionaryOfContacts["Name999999"] ?? ""
+        dictionaryOfContacts["Name\(arrayOfNames.count - 1)"] ?? ""
     }
     
     private func searchForNonExistingElementOfArray() -> String {
-        arrayOfPhones[arrayOfNames.firstIndex(of: "Unknown Name") ?? 0]
-        
+        guard let index = arrayOfNames.firstIndex(of: "Unknown Name") else {return "does not exist"}
+        return arrayOfPhones[index]
     }
     
     private func searchForNonExistingElementOfDictionary() -> String {
@@ -74,3 +77,36 @@ struct DictionaryService {
         return (String(format: "%.2f", timeInterval), result)
     }
 }
+
+#if DEBUG
+extension DictionaryService {
+    
+    public func getArrayOfNames() -> [String] {
+        arrayOfNames
+    }
+    public func getArrayOfPhones() -> [String] {
+        arrayOfPhones
+    }
+    public func getDictionaryOfContacts() -> [String:String] {
+        dictionaryOfContacts
+    }
+    public mutating func exposeFindFirstElementOfArray() -> String {
+        findFirstElementOfArray()
+    }
+    public mutating func exposeFindFirstElementOfDictinary() -> String {
+        findFirstElementOfDictinary()
+    }
+    public mutating func exposeFindLastElementOfArray() -> String {
+        findLastElementOfArray()
+    }
+    public mutating func exposeFindLastElementOfDictionary() -> String {
+        findLastElementOfDictionary()
+    }
+    public mutating func exposeSearchForNonExistingElementOfArray() -> String {
+        searchForNonExistingElementOfArray()
+    }
+    public mutating func exposeSearchForNonExistingElementOfDictionary() -> String {
+        searchForNonExistingElementOfDictionary()
+    }
+}
+#endif

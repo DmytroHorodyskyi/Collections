@@ -9,15 +9,19 @@ import Foundation
 
 struct ArrayService {
     
+    private let arraySize = 10_000_000
+    private let auxiliaryArraySize = 1_000
     private var array = [Int]()
-    private let auxiliaryArray = Array(0..<1000)
+    private var auxiliaryArray = [Int]()
     private let arrayOperationsQueue = DispatchQueue(label: "arrayOperationsQueue")
     
-    private mutating func generateArray() {
-        array = []
-        for element in 0..<10_000_000 {
-            array.append(element + 1)
-        }
+    private mutating func generateAuxiliaryArray(of numbers: Int) {
+        auxiliaryArray = Array(0..<numbers)
+    }
+    
+    private mutating func generateArray(of numbers: Int) {
+        array = Array(0..<numbers)
+        generateAuxiliaryArray(of: auxiliaryArraySize)
     }
     
     private mutating func insertAtTheBeginigOneByOne() {
@@ -31,13 +35,15 @@ struct ArrayService {
     }
     
     private mutating func insertInTheMiddleOneByOne() {
-        for (index, element) in auxiliaryArray.enumerated() {
-            array.insert(element, at: (array.count - 1) / 2 + index)
+        var index = (array.count) / 2
+        for element in auxiliaryArray {
+            array.insert(element, at: index )
+            index += 1
         }
     }
     
     private mutating func insertInTheMiddleAtOnce() {
-        array.insert(contentsOf: auxiliaryArray, at: (array.count - 1) / 2)
+        array.insert(contentsOf: auxiliaryArray, at: (array.count) / 2)
     }
     
     private mutating func appendToTheEndOneByOne() {
@@ -51,47 +57,47 @@ struct ArrayService {
     }
     
     private mutating func removeAtTheBeginingOneByOne() {
-        guard array.contains(1000) else {return}
+        guard array.contains(auxiliaryArray.count) else {return}
         for _ in auxiliaryArray {
             array.removeFirst()
         }
     }
     
     private mutating func removeAtTheBeginigAtOnce() {
-        guard array.contains(1000) else {return}
-        array.removeFirst(1000)
+        guard array.contains(auxiliaryArray.count) else {return}
+        array.removeFirst(auxiliaryArray.count)
     }
     
     private mutating func removeInTheMiddleOneByOne() {
-        guard array.contains(1000) else {return}
+        guard array.contains(auxiliaryArray.count) else {return}
         for _ in auxiliaryArray {
-            array.remove(at: (array.count - 1) / 2)
+            array.remove(at: (array.count) / 2)
         }
     }
     
     private mutating func removeInTheMiddleAtOnce() {
-        guard array.contains(1000) else {return}
-        array.removeSubrange(((array.count - 1) / 2 - 500)...((array.count - 1) / 2 + 500))
+        guard array.contains(auxiliaryArray.count) else {return}
+        array.removeSubrange(((array.count) / 2 - auxiliaryArray.count / 2)..<((array.count) / 2 - auxiliaryArray.count / 2) + auxiliaryArray.count)
     }
     
     private mutating func removeAtTheEndOneByOne() {
-        guard array.contains(1000) else {return}
+        guard array.contains(auxiliaryArray.count) else {return}
         for _ in auxiliaryArray {
             array.removeLast()
         }
     }
     
     private mutating func removeAtTheEndAtOnce() {
-        guard array.contains(1000) else {return}
-        array.removeLast(1000)
+        guard array.contains(auxiliaryArray.count) else {return}
+        array.removeLast(auxiliaryArray.count)
     }
     
     
-    private mutating func runOperationWith(at identifiersRepository: ArrayIdentifiersRepository) {
+    private mutating func runOperation(at identifier: ArrayIdentifiersRepository) {
         
-        switch identifiersRepository {
+        switch identifier {
         case .generateArray:
-            generateArray()
+            generateArray(of: arraySize)
         case .insertAtTheBeginigOneByOne:
             insertAtTheBeginigOneByOne()
         case .insertAtTheBeginigAtOnce:
@@ -117,14 +123,14 @@ struct ArrayService {
         case .removeAtTheEndAtOnce:
             removeAtTheEndAtOnce()
         case .none:
-            return 
+            return
         }
     }
     
     mutating func getTimeOf(function identifier: ArrayIdentifiersRepository) -> String {
         arrayOperationsQueue.sync {
             let start = DispatchTime.now()
-            runOperationWith(at: identifier)
+            runOperation(at: identifier)
             let end = DispatchTime.now()
             let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
             let timeInterval = Double(nanoTime) / 1_000_000
@@ -135,8 +141,51 @@ struct ArrayService {
 
 #if DEBUG
 extension ArrayService {
-    public mutating func privateGenerateArray() {
-        self.generateArray()
+    
+    public func getArray() -> [Int] {
+        array
+    }
+    public mutating func exposeGenerateAuxiliaryArray(size: Int) {
+        generateAuxiliaryArray(of: size)
+    }
+    public mutating func exposeGenerateArray(size: Int) {
+        generateArray(of: size)
+    }
+    public mutating func exposeInsertAtTheBeginigOneByOne() {
+        insertAtTheBeginigOneByOne()
+    }
+    public mutating func exposeInsertAtTheBeginigAtOnce() {
+        insertAtTheBeginigAtOnce()
+    }
+    public mutating func exposeInsertInTheMiddleOneByOne() {
+        insertInTheMiddleOneByOne()
+    }
+    public mutating func exposeInsertInTheMiddleAtOnce() {
+        insertInTheMiddleAtOnce()
+    }
+    public mutating func exposeAppendToTheEndOneByOne() {
+        appendToTheEndOneByOne()
+    }
+    public mutating func exposeAppendToTheEndAtOnce() {
+        appendToTheEndAtOnce()
+    }
+    public mutating func exposeRemoveAtTheBeginingOneByOne() {
+        removeAtTheBeginingOneByOne()
+    }
+    public mutating func exposeRemoveAtTheBeginigAtOnce() {
+        removeAtTheBeginigAtOnce()
+    }
+    public mutating func exposeRemoveInTheMiddleOneByOne() {
+        removeInTheMiddleOneByOne()
+    }
+    public mutating func exposeRemoveInTheMiddleAtOnce() {
+        removeInTheMiddleAtOnce()
+    }
+    public mutating func exposeRemoveAtTheEndOneByOne() {
+        removeAtTheEndOneByOne()
+    }
+    public mutating func exposeRemoveAtTheEndAtOnce() {
+        removeAtTheEndAtOnce()
     }
 }
 #endif

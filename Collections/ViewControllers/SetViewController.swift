@@ -48,7 +48,7 @@ class SetViewController: UIViewController {
         secondLabel.text = setService.symmetricDifference(mainTextField.text ?? "", auxiliaryTextFiled.text ?? "")
     }
     
-    @IBAction func allUniquecharactersFromTheFirsttextField(_ sender: UIButton) {
+    @IBAction func allUniqueCharactersFromTheFirstButtonAction(_ sender: UIButton) {
         thirdLabel.text = setService.subtracting(mainTextField.text ?? "", auxiliaryTextFiled.text ?? "")
     }
 }
