@@ -8,7 +8,7 @@
 import XCTest
 @testable import Collections
 
-final class DictionaryServiceTests: XCTestCase {
+final class DictionaryServiceUnitTests: XCTestCase {
 
     var dictionarySevice: DictionaryService!
 
@@ -24,37 +24,37 @@ final class DictionaryServiceTests: XCTestCase {
     }
 
     func testGenerateCollections() {
-        XCTAssertEqual(dictionarySevice.getArrayOfNames(),
+        XCTAssertEqual(dictionarySevice.arrayOfNames,
                        ["Name0", "Name1", "Name2", "Name3", "Name4"])
-        XCTAssertEqual(dictionarySevice.getArrayOfPhones(),
+        XCTAssertEqual(dictionarySevice.arrayOfPhones,
                        ["+38 050 0", "+38 050 1", "+38 050 2", "+38 050 3", "+38 050 4"])
-        XCTAssertEqual(dictionarySevice.getDictionaryOfContacts(),
+        XCTAssertEqual(dictionarySevice.dictionaryOfContacts,
                        ["Name0":"+38 050 0", "Name1":"+38 050 1", "Name2":"+38 050 2", "Name3":"+38 050 3", "Name4":"+38 050 4"])
     }
     
     func testFindFirstElementOfArraySuccessfuly() {
-        XCTAssertEqual(dictionarySevice.exposeFindFirstElementOfArray(), "+38 050 0")
+        XCTAssertEqual(dictionarySevice.findFirstElementOfArray(), "+38 050 0")
     }
 
     func testFindFirstElementOfDictinarySuccessfuly() {
-        XCTAssertEqual(dictionarySevice.exposeFindFirstElementOfDictinary(), "+38 050 0")
+        XCTAssertEqual(dictionarySevice.findFirstElementOfDictinary(), "+38 050 0")
     }
     
     func testFindLastElementOfArraySuccessfuly() {
-        XCTAssertEqual(dictionarySevice.exposeFindLastElementOfArray(), "+38 050 4")
+        XCTAssertEqual(dictionarySevice.findLastElementOfArray(), "+38 050 4")
     }
     
     func testFindLastElementOfDictionary() {
-        XCTAssertEqual(dictionarySevice.exposeFindLastElementOfDictionary(), "+38 050 4")
+        XCTAssertEqual(dictionarySevice.findLastElementOfDictionary(), "+38 050 4")
     }
     
     func testSearchForNonExistingElementOfArray() {
-        XCTAssertEqual(dictionarySevice.exposeSearchForNonExistingElementOfArray(),
+        XCTAssertEqual(dictionarySevice.searchForNonExistingElementOfArray(),
                        "does not exist")
     }
     
     func testSearchForNonExistingElementOfDictionary() {
-        XCTAssertEqual(dictionarySevice.exposeSearchForNonExistingElementOfDictionary(),
+        XCTAssertEqual(dictionarySevice.searchForNonExistingElementOfDictionary(),
                        "does not exist")
     }
 }

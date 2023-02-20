@@ -9,9 +9,9 @@ import Foundation
 
 struct DictionaryService {
     
-    private var arrayOfNames = [String]()
-    private var arrayOfPhones = [String]()
-    private var dictionaryOfContacts = [String:String]()
+    var arrayOfNames = [String]()
+    var arrayOfPhones = [String]()
+    var dictionaryOfContacts = [String:String]()
     public let collectionsSize = 10_000_000
 
     mutating func generateCollections(of numbers: Int) {
@@ -22,30 +22,30 @@ struct DictionaryService {
         }
     }
     
-    private func findFirstElementOfArray() -> String {
+    func findFirstElementOfArray() -> String {
         guard let index = arrayOfNames.firstIndex(of: "Name0") else {return "does not exist"}
         return arrayOfPhones[index]
     }
     
-    private func findFirstElementOfDictinary() -> String {
+    func findFirstElementOfDictinary() -> String {
         dictionaryOfContacts["Name0"] ?? ""
     }
     
-    private func findLastElementOfArray() -> String {
+    func findLastElementOfArray() -> String {
         guard let index = arrayOfNames.firstIndex(of: "Name\(arrayOfNames.count - 1)") else {return "does not exist"}
         return arrayOfPhones[index]
     }
     
-    private func findLastElementOfDictionary() -> String {
+    func findLastElementOfDictionary() -> String {
         dictionaryOfContacts["Name\(arrayOfNames.count - 1)"] ?? ""
     }
     
-    private func searchForNonExistingElementOfArray() -> String {
+    func searchForNonExistingElementOfArray() -> String {
         guard let index = arrayOfNames.firstIndex(of: "Unknown Name") else {return "does not exist"}
         return arrayOfPhones[index]
     }
     
-    private func searchForNonExistingElementOfDictionary() -> String {
+    func searchForNonExistingElementOfDictionary() -> String {
         dictionaryOfContacts["Unknown Name"] ?? "does not exist"
     }
     
@@ -77,36 +77,3 @@ struct DictionaryService {
         return (String(format: "%.2f", timeInterval), result)
     }
 }
-
-#if DEBUG
-extension DictionaryService {
-    
-    public func getArrayOfNames() -> [String] {
-        arrayOfNames
-    }
-    public func getArrayOfPhones() -> [String] {
-        arrayOfPhones
-    }
-    public func getDictionaryOfContacts() -> [String:String] {
-        dictionaryOfContacts
-    }
-    public mutating func exposeFindFirstElementOfArray() -> String {
-        findFirstElementOfArray()
-    }
-    public mutating func exposeFindFirstElementOfDictinary() -> String {
-        findFirstElementOfDictinary()
-    }
-    public mutating func exposeFindLastElementOfArray() -> String {
-        findLastElementOfArray()
-    }
-    public mutating func exposeFindLastElementOfDictionary() -> String {
-        findLastElementOfDictionary()
-    }
-    public mutating func exposeSearchForNonExistingElementOfArray() -> String {
-        searchForNonExistingElementOfArray()
-    }
-    public mutating func exposeSearchForNonExistingElementOfDictionary() -> String {
-        searchForNonExistingElementOfDictionary()
-    }
-}
-#endif

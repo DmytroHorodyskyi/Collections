@@ -13,9 +13,9 @@
 		743C9DDE2994ED7200E0D84B /* DictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C9DDD2994ED7200E0D84B /* DictionaryService.swift */; };
 		743C9DE02995318900E0D84B /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743C9DDF2995318900E0D84B /* DictionaryViewController.swift */; };
 		744D9AA2299DFBAB008D4787 /* MainTabelViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D9AA1299DFBAB008D4787 /* MainTabelViewControllerUITests.swift */; };
-		74B536DC29A0145A0033C7BE /* ArrayServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DB29A0145A0033C7BE /* ArrayServiceTests.swift */; };
-		74B536DE29A014770033C7BE /* SetServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DD29A014770033C7BE /* SetServiceTests.swift */; };
-		74B536E029A014AC0033C7BE /* DictionaryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DF29A014AC0033C7BE /* DictionaryServiceTests.swift */; };
+		74B536DC29A0145A0033C7BE /* ArrayServiceUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DB29A0145A0033C7BE /* ArrayServiceUnitTests.swift */; };
+		74B536DE29A014770033C7BE /* SetServiceUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DD29A014770033C7BE /* SetServiceUnitTests.swift */; };
+		74B536E029A014AC0033C7BE /* DictionaryServiceUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536DF29A014AC0033C7BE /* DictionaryServiceUnitTests.swift */; };
 		74B536E429A018730033C7BE /* ArrayViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536E229A0184E0033C7BE /* ArrayViewControllerUITests.swift */; };
 		74B536E629A018900033C7BE /* SetViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536E529A018900033C7BE /* SetViewControllerUITests.swift */; };
 		74B536E829A018AF0033C7BE /* DictionaryViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B536E729A018AF0033C7BE /* DictionaryViewControllerUITests.swift */; };
@@ -61,9 +61,9 @@
 		744D9A92299DFB9B008D4787 /* CollectionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		744D9A9F299DFBAB008D4787 /* CollectionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		744D9AA1299DFBAB008D4787 /* MainTabelViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabelViewControllerUITests.swift; sourceTree = "<group>"; };
-		74B536DB29A0145A0033C7BE /* ArrayServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayServiceTests.swift; sourceTree = "<group>"; };
-		74B536DD29A014770033C7BE /* SetServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetServiceTests.swift; sourceTree = "<group>"; };
-		74B536DF29A014AC0033C7BE /* DictionaryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryServiceTests.swift; sourceTree = "<group>"; };
+		74B536DB29A0145A0033C7BE /* ArrayServiceUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayServiceUnitTests.swift; sourceTree = "<group>"; };
+		74B536DD29A014770033C7BE /* SetServiceUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetServiceUnitTests.swift; sourceTree = "<group>"; };
+		74B536DF29A014AC0033C7BE /* DictionaryServiceUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryServiceUnitTests.swift; sourceTree = "<group>"; };
 		74B536E229A0184E0033C7BE /* ArrayViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayViewControllerUITests.swift; sourceTree = "<group>"; };
 		74B536E529A018900033C7BE /* SetViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewControllerUITests.swift; sourceTree = "<group>"; };
 		74B536E729A018AF0033C7BE /* DictionaryViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewControllerUITests.swift; sourceTree = "<group>"; };
@@ -123,9 +123,9 @@
 		744D9A93299DFB9B008D4787 /* CollectionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				74B536DB29A0145A0033C7BE /* ArrayServiceTests.swift */,
-				74B536DD29A014770033C7BE /* SetServiceTests.swift */,
-				74B536DF29A014AC0033C7BE /* DictionaryServiceTests.swift */,
+				74B536DB29A0145A0033C7BE /* ArrayServiceUnitTests.swift */,
+				74B536DD29A014770033C7BE /* SetServiceUnitTests.swift */,
+				74B536DF29A014AC0033C7BE /* DictionaryServiceUnitTests.swift */,
 			);
 			path = CollectionsTests;
 			sourceTree = "<group>";
@@ -352,9 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74B536E029A014AC0033C7BE /* DictionaryServiceTests.swift in Sources */,
-				74B536DC29A0145A0033C7BE /* ArrayServiceTests.swift in Sources */,
-				74B536DE29A014770033C7BE /* SetServiceTests.swift in Sources */,
+				74B536E029A014AC0033C7BE /* DictionaryServiceUnitTests.swift in Sources */,
+				74B536DC29A0145A0033C7BE /* ArrayServiceUnitTests.swift in Sources */,
+				74B536DE29A014770033C7BE /* SetServiceUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

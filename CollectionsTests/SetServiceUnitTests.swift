@@ -8,7 +8,7 @@
 import XCTest
 @testable import Collections
 
-final class SetServiceTests: XCTestCase {
+final class SetServiceUnitTests: XCTestCase {
     
     var setService: SetService!
     
@@ -22,7 +22,7 @@ final class SetServiceTests: XCTestCase {
         super.tearDown()
     }
     
-    func testIntersectionSuccessfuly() throws {
+    func testIntersectionSuccessfuly() {
         XCTAssertEqual(setService.intersection("abcde", "defghi"), "de")
     }
     
