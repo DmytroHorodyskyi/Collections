@@ -15,7 +15,7 @@ final class DictionaryServiceUnitTests: XCTestCase {
     override func setUp() {
         super.setUp()
         dictionarySevice = DictionaryService()
-        dictionarySevice.generateCollections(of: 5)
+        dictionarySevice.generateCollections()
     }
 
     override func tearDown() {
@@ -24,12 +24,10 @@ final class DictionaryServiceUnitTests: XCTestCase {
     }
 
     func testGenerateCollections() {
-        XCTAssertEqual(dictionarySevice.arrayOfNames,
-                       ["Name0", "Name1", "Name2", "Name3", "Name4"])
-        XCTAssertEqual(dictionarySevice.arrayOfPhones,
-                       ["+38 050 0", "+38 050 1", "+38 050 2", "+38 050 3", "+38 050 4"])
-        XCTAssertEqual(dictionarySevice.dictionaryOfContacts,
-                       ["Name0":"+38 050 0", "Name1":"+38 050 1", "Name2":"+38 050 2", "Name3":"+38 050 3", "Name4":"+38 050 4"])
+        let expected = 10_000_000
+        XCTAssertEqual(dictionarySevice.arrayOfNames.count, expected)
+        XCTAssertEqual(dictionarySevice.arrayOfPhones.count, expected)
+        XCTAssertEqual(dictionarySevice.dictionaryOfContacts.count, expected)
     }
     
     func testFindFirstElementOfArraySuccessfuly() {
@@ -41,11 +39,11 @@ final class DictionaryServiceUnitTests: XCTestCase {
     }
     
     func testFindLastElementOfArraySuccessfuly() {
-        XCTAssertEqual(dictionarySevice.findLastElementOfArray(), "+38 050 4")
+        XCTAssertEqual(dictionarySevice.findLastElementOfArray(), "+38 050 9999999")
     }
     
     func testFindLastElementOfDictionary() {
-        XCTAssertEqual(dictionarySevice.findLastElementOfDictionary(), "+38 050 4")
+        XCTAssertEqual(dictionarySevice.findLastElementOfDictionary(), "+38 050 9999999")
     }
     
     func testSearchForNonExistingElementOfArray() {

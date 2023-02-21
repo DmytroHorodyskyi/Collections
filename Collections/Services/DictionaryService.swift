@@ -12,10 +12,9 @@ struct DictionaryService {
     var arrayOfNames = [String]()
     var arrayOfPhones = [String]()
     var dictionaryOfContacts = [String:String]()
-    public let collectionsSize = 10_000_000
 
-    mutating func generateCollections(of numbers: Int) {
-        for element in 0..<numbers {
+    mutating func generateCollections() {
+        for element in 0..<10_000_000 {
             arrayOfNames.append("Name\(element)")
             arrayOfPhones.append("+38 050 \(element)")
             dictionaryOfContacts["Name\(element)"] = "+38 050 \(element)"

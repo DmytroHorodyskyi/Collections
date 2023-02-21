@@ -15,8 +15,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     override func setUp() {
         super.setUp()
         arrayService = ArrayService()
-        arrayService.generateArray(of: 10)
-        arrayService.generateAuxiliaryArray(of: 3)
+        arrayService.generateArray()
     }
     
     override func tearDown() {
@@ -25,66 +24,95 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testGenerateArraySuccessfuly() {
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,5,6,7,8,9] )
+        let expected = 10_000_000
+        XCTAssertEqual( arrayService.array.count, expected )
     }
     
     func testInsertAtTheBeginigOneByOneSuccessfuly() {
+        arrayService.array = [0]
         arrayService.insertAtTheBeginigOneByOne()
-        XCTAssertEqual( arrayService.array, [0,1,2,0,1,2,3,4,5,6,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 1001)
+        XCTAssertEqual( arrayService.array.last, 0)
     }
     
-    func testInsertAtTheBeginigAtOnceSuccessfuly(){
+    func testInsertAtTheBeginigAtOnceSuccessfuly() {
+        arrayService.array = [0]
         arrayService.insertAtTheBeginigAtOnce()
-        XCTAssertEqual( arrayService.array, [0,1,2,0,1,2,3,4,5,6,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 1001)
+        XCTAssertEqual( arrayService.array.last, 0)
     }
     
-    func testInsertInTheMiddleOneByOneSuccessfuly(){
+    func testInsertInTheMiddleOneByOneSuccessfuly() {
+        arrayService.array = [0, 1]
         arrayService.insertInTheMiddleOneByOne()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,0,1,2,5,6,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 1002)
+        XCTAssertEqual( arrayService.array.first, 0)
+        XCTAssertEqual( arrayService.array.last, 1)
     }
     
-    func testInsertInTheMiddleAtOnceSuccessfuly(){
+    func testInsertInTheMiddleAtOnceSuccessfuly() {
+        arrayService.array = [0, 1]
         arrayService.insertInTheMiddleAtOnce()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,0,1,2,5,6,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 1002)
+        XCTAssertEqual( arrayService.array.first, 0)
+        XCTAssertEqual( arrayService.array.last, 1)
     }
     
-    func testAppendToTheEndOneByOneSuccessfuly(){
+    func testAppendToTheEndOneByOneSuccessfuly() {
+        arrayService.array = [0]
         arrayService.appendToTheEndOneByOne()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,5,6,7,8,9,0,1,2] )
+        XCTAssertEqual( arrayService.array.count, 1001)
+        XCTAssertEqual( arrayService.array.last, 999)
     }
     
-    func testAppendToTheEndAtOnceSuccessfuly(){
+    func testAppendToTheEndAtOnceSuccessfuly() {
+        arrayService.array = [0]
         arrayService.appendToTheEndAtOnce()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,5,6,7,8,9,0,1,2] )
+        XCTAssertEqual( arrayService.array.count, 1001)
+        XCTAssertEqual( arrayService.array.last, 999)
     }
     
-    func testRemoveAtTheBeginingOneByOneSuccessfuly(){
+    func testRemoveAtTheBeginingOneByOneSuccessfuly() {
+        arrayService.array = Array(0...1000)
         arrayService.removeAtTheBeginingOneByOne()
-        XCTAssertEqual( arrayService.array, [3,4,5,6,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 1)
+        XCTAssertEqual( arrayService.array, [1000])
     }
     
-    func testRemoveAtTheBeginigAtOnceSuccessfuly(){
+    func testRemoveAtTheBeginigAtOnceSuccessfuly() {
+        arrayService.array = Array(0...1000)
         arrayService.removeAtTheBeginigAtOnce()
-        XCTAssertEqual( arrayService.array, [3,4,5,6,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 1)
+        XCTAssertEqual( arrayService.array, [1000])
     }
     
-    func testRemoveInTheMiddleOneByOneSuccessfuly(){
+    func testRemoveInTheMiddleOneByOneSuccessfuly() {
+        arrayService.array = Array(0...1001)
         arrayService.removeInTheMiddleOneByOne()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 2)
+        XCTAssertEqual( arrayService.array.first, 0)
+        XCTAssertEqual( arrayService.array.last, 1001)
     }
     
-    func testRemoveInTheMiddleAtOnceSuccessfuly(){
+    func testRemoveInTheMiddleAtOnceSuccessfuly() {
+        arrayService.array = Array(0...1001)
         arrayService.removeInTheMiddleAtOnce()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,7,8,9] )
+        XCTAssertEqual( arrayService.array.count, 2)
+        XCTAssertEqual( arrayService.array.first, 0)
+        XCTAssertEqual( arrayService.array.last, 1001)
     }
     
-    func testRemoveAtTheEndOneByOneSuccessfuly(){
+    func testRemoveAtTheEndOneByOneSuccessfuly() {
+        arrayService.array = Array(0...1000)
         arrayService.removeAtTheEndOneByOne()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,5,6] )
+        XCTAssertEqual( arrayService.array.count, 1)
+        XCTAssertEqual( arrayService.array, [0])
     }
     
-    func testRemoveAtTheEndAtOnceSuccessfuly(){
+    func testRemoveAtTheEndAtOnceSuccessfuly() {
+        arrayService.array = Array(0...1000)
         arrayService.removeAtTheEndAtOnce()
-        XCTAssertEqual( arrayService.array, [0,1,2,3,4,5,6] )
-    }    
+        XCTAssertEqual( arrayService.array.count, 1)
+        XCTAssertEqual( arrayService.array, [0])
+    }
 }
