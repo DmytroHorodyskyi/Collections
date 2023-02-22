@@ -41,5 +41,5 @@ Display the execution time of each operation.
 * search for a non-existing element;
 Display the execution time of each operation.
 
-<img src="https://github.com/DmytroHorodyskyi/Collections/blob/main/Screenshots/DictionaryViewController.PNG" width="300" >
+<img src="https://github.com/DmytroHorodyskyi/Collections/blob/main/Screenshots/DictionaryViewController.PNG" width="200" >
 
