@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Set-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController title="Set" id="Y6W-OH-hqX" customClass="SetViewController" customModule="Collections" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSI-71-ec4">
+                                <rect key="frame" x="16" y="143" width="361" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="mainTextField"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="mainTextFieldAction:" destination="Y6W-OH-hqX" eventType="editingChanged" id="qAP-nY-LAF"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="fkn-it-ten"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0q-Ey-cf4">
+                                <rect key="frame" x="16" y="217" width="361" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="auxiliaryTextField"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="auxiliaryTextFieldAction:" destination="Y6W-OH-hqX" eventType="editingChanged" id="zCy-8k-llS"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="jn5-D1-74b"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o20-IJ-vQE">
+                                <rect key="frame" x="111.33333333333333" y="291" width="170.66666666666669" height="35"/>
+                                <accessibility key="accessibilityConfiguration" identifier="allMatchingLetters"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="All matching letters"/>
+                                <connections>
+                                    <action selector="allMatchingLettersActionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ost-pM-U09"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4c-yY-9pQ">
+                                <rect key="frame" x="196.66666666666666" y="351" width="0.0" height="0.0"/>
+                                <accessibility key="accessibilityConfiguration" identifier="firstLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouz-Zb-o08">
+                                <rect key="frame" x="196.66666666666666" y="436" width="0.0" height="0.0"/>
+                                <accessibility key="accessibilityConfiguration" identifier="secondLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSF-O0-zsw">
+                                <rect key="frame" x="19" y="461" width="355" height="53.333333333333371"/>
+                                <accessibility key="accessibilityConfiguration" identifier="allUniqueCharactersFromTheFirst"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" titleAlignment="center">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="All unique characters from the first text field that do not match in text field">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="allUniqueCharactersFromTheFirstButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qV4-OR-st8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqs-Ot-2cc">
+                                <rect key="frame" x="196.66666666666666" y="539.33333333333337" width="0.0" height="0.0"/>
+                                <accessibility key="accessibilityConfiguration" identifier="thirdLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gye-wb-2A5">
+                                <rect key="frame" x="62.666666666666657" y="376" width="267.66666666666674" height="35"/>
+                                <accessibility key="accessibilityConfiguration" identifier="allCharactersThatDoNotMatch"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="All characters that do not match"/>
+                                <connections>
+                                    <action selector="allCharactersThatDoNotMatchButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="J0t-2o-x1b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g4c-yY-9pQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1Do-c1-iia"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o20-IJ-vQE" secondAttribute="trailing" constant="16" id="3eU-0h-3w4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Y0q-Ey-cf4" secondAttribute="trailing" constant="16" id="4Rw-rf-rQz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CSI-71-ec4" secondAttribute="trailing" constant="16" id="5AY-DA-y3H"/>
+                            <constraint firstItem="CSI-71-ec4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="5lu-cD-pTQ"/>
+                            <constraint firstItem="ouz-Zb-o08" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="6wY-tJ-A0P"/>
+                            <constraint firstItem="Y0q-Ey-cf4" firstAttribute="top" secondItem="CSI-71-ec4" secondAttribute="bottom" constant="40" id="8nr-vm-NhH"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ouz-Zb-o08" secondAttribute="trailing" constant="16" id="Apa-99-Fxh"/>
+                            <constraint firstItem="gye-wb-2A5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="CZd-xf-pSQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gye-wb-2A5" secondAttribute="trailing" constant="16" id="GBg-Dr-3EA"/>
+                            <constraint firstItem="BSF-O0-zsw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="IH6-YU-Xcu"/>
+                            <constraint firstItem="o20-IJ-vQE" firstAttribute="top" secondItem="Y0q-Ey-cf4" secondAttribute="bottom" constant="40" id="MyM-CZ-FLy"/>
+                            <constraint firstItem="CSI-71-ec4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="NYq-Gq-6xp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="g4c-yY-9pQ" secondAttribute="trailing" constant="16" id="Ngl-e7-6bx"/>
+                            <constraint firstItem="gye-wb-2A5" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="OuE-cN-Qim"/>
+                            <constraint firstItem="ouz-Zb-o08" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="RhH-Rp-sgb"/>
+                            <constraint firstItem="g4c-yY-9pQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Ryo-SK-eaK"/>
+                            <constraint firstItem="bqs-Ot-2cc" firstAttribute="top" secondItem="BSF-O0-zsw" secondAttribute="bottom" constant="25" id="Sj5-Zd-Yi1"/>
+                            <constraint firstItem="BSF-O0-zsw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Y5v-xH-zu9"/>
+                            <constraint firstItem="o20-IJ-vQE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Y7F-D6-GqM"/>
+                            <constraint firstItem="Y0q-Ey-cf4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="bDK-Bh-Y7l"/>
+                            <constraint firstItem="ouz-Zb-o08" firstAttribute="top" secondItem="gye-wb-2A5" secondAttribute="bottom" constant="25" id="f7X-Vv-9lC"/>
+                            <constraint firstItem="o20-IJ-vQE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="hMa-Td-y0g"/>
+                            <constraint firstItem="bqs-Ot-2cc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="iRl-HO-3k9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BSF-O0-zsw" secondAttribute="trailing" constant="16" id="j8N-qh-v9s"/>
+                            <constraint firstItem="gye-wb-2A5" firstAttribute="top" secondItem="g4c-yY-9pQ" secondAttribute="bottom" constant="25" id="juB-I6-f21"/>
+                            <constraint firstItem="g4c-yY-9pQ" firstAttribute="top" secondItem="o20-IJ-vQE" secondAttribute="bottom" constant="25" id="ot6-id-sMv"/>
+                            <constraint firstItem="bqs-Ot-2cc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="s7l-Sh-3Di"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bqs-Ot-2cc" secondAttribute="trailing" constant="16" id="tJ7-lu-OC0"/>
+                            <constraint firstItem="BSF-O0-zsw" firstAttribute="top" secondItem="ouz-Zb-o08" secondAttribute="bottom" constant="25" id="xc3-bh-AeC"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="auxiliaryTextFiled" destination="Y0q-Ey-cf4" id="A5u-fN-dlt"/>
+                        <outlet property="firstLabel" destination="g4c-yY-9pQ" id="dFa-b1-Ruh"/>
+                        <outlet property="mainTextField" destination="CSI-71-ec4" id="7Vn-TA-Tbn"/>
+                        <outlet property="secondLabel" destination="ouz-Zb-o08" id="EGx-V0-4qh"/>
+                        <outlet property="thirdLabel" destination="bqs-Ot-2cc" id="zat-zc-OfH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="25" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
