@@ -15,7 +15,6 @@ final class ArrayServiceUnitTests: XCTestCase {
     override func setUp() {
         super.setUp()
         arrayService = ArrayService()
-        arrayService.generateArray()
     }
     
     override func tearDown() {
@@ -24,11 +23,13 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testGenerateArraySuccessfuly() {
+        arrayService.generateArray()
         let expected = 10_000_000
         XCTAssertEqual( arrayService.array.count, expected )
     }
     
     func testInsertAtTheBeginigOneByOneSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = [0]
         arrayService.insertAtTheBeginigOneByOne()
         XCTAssertEqual( arrayService.array.count, 1001)
@@ -36,6 +37,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testInsertAtTheBeginigAtOnceSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = [0]
         arrayService.insertAtTheBeginigAtOnce()
         XCTAssertEqual( arrayService.array.count, 1001)
@@ -43,6 +45,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testInsertInTheMiddleOneByOneSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = [0, 1]
         arrayService.insertInTheMiddleOneByOne()
         XCTAssertEqual( arrayService.array.count, 1002)
@@ -51,6 +54,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testInsertInTheMiddleAtOnceSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = [0, 1]
         arrayService.insertInTheMiddleAtOnce()
         XCTAssertEqual( arrayService.array.count, 1002)
@@ -59,6 +63,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testAppendToTheEndOneByOneSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = [0]
         arrayService.appendToTheEndOneByOne()
         XCTAssertEqual( arrayService.array.count, 1001)
@@ -66,6 +71,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testAppendToTheEndAtOnceSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = [0]
         arrayService.appendToTheEndAtOnce()
         XCTAssertEqual( arrayService.array.count, 1001)
@@ -73,6 +79,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testRemoveAtTheBeginingOneByOneSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = Array(0...1000)
         arrayService.removeAtTheBeginingOneByOne()
         XCTAssertEqual( arrayService.array.count, 1)
@@ -80,6 +87,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testRemoveAtTheBeginigAtOnceSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = Array(0...1000)
         arrayService.removeAtTheBeginigAtOnce()
         XCTAssertEqual( arrayService.array.count, 1)
@@ -87,6 +95,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testRemoveInTheMiddleOneByOneSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = Array(0...1001)
         arrayService.removeInTheMiddleOneByOne()
         XCTAssertEqual( arrayService.array.count, 2)
@@ -95,6 +104,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testRemoveInTheMiddleAtOnceSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = Array(0...1001)
         arrayService.removeInTheMiddleAtOnce()
         XCTAssertEqual( arrayService.array.count, 2)
@@ -103,6 +113,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testRemoveAtTheEndOneByOneSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = Array(0...1000)
         arrayService.removeAtTheEndOneByOne()
         XCTAssertEqual( arrayService.array.count, 1)
@@ -110,6 +121,7 @@ final class ArrayServiceUnitTests: XCTestCase {
     }
     
     func testRemoveAtTheEndAtOnceSuccessfuly() {
+        arrayService.generateArray()
         arrayService.array = Array(0...1000)
         arrayService.removeAtTheEndAtOnce()
         XCTAssertEqual( arrayService.array.count, 1)

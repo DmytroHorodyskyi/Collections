@@ -27,10 +27,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 1)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
-        XCTAssert(cell.staticTexts["arrayCellLabel"].waitForExistence(timeout: 10))
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Insertion time:"))
     }
     
@@ -38,9 +37,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 2)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Insertion time:"))
     }
     
@@ -48,9 +47,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 3)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Insertion time:"))
     }
     
@@ -58,9 +57,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 4)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Insertion time:"))
     }
     
@@ -68,9 +67,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 5)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Insertion time:"))
     }
     
@@ -78,9 +77,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 6)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Insertion time:"))
     }
     
@@ -88,9 +87,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 7)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Removing time:"))
     }
     
@@ -98,9 +97,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 8)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Removing time:"))
         
     }
@@ -109,9 +108,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 9)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Removing time:"))
     }
     
@@ -119,9 +118,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 10)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Removing time:"))
     }
     
@@ -129,9 +128,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 11)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Removing time:"))
     }
     
@@ -139,9 +138,9 @@ final class ArrayViewControllerUITests: XCTestCase {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 12)
         XCTAssert(cell.waitForExistence(timeout: 10))
         cell.tap()
-        var timeout = 0
-        while cell.staticTexts["arrayCellLabel"].label == "" && timeout <= 10 {
-            sleep(1); timeout += 1 }
+        let predicate = NSPredicate { _, _ in
+            cell.staticTexts["arrayCellLabel"].label != ""}
+        wait(for: [expectation(for: predicate, evaluatedWith: nil)], timeout: 30)
         XCTAssert(cell.staticTexts["arrayCellLabel"].label.contains("Removing time:"))
     }
 }
